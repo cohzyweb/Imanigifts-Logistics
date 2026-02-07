@@ -46,11 +46,12 @@ h1, h2, h3 {
 
 /* ================= BUTTONS ================= */
 .btn {
-    padding: 12px 24px;
+    padding: 12px 26px;
     border-radius: 30px;
     font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
     border: none;
 }
 
@@ -108,9 +109,17 @@ h1, h2, h3 {
     color: var(--primary-color);
 }
 
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+}
+
 .menu-toggle {
     display: none;
     font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 /* ================= HERO ================= */
@@ -127,23 +136,33 @@ h1, h2, h3 {
 
 .hero h1 {
     font-size: 48px;
+    margin-bottom: 20px;
 }
 
 .hero p {
     color: var(--text-light);
+    margin-bottom: 25px;
 }
 
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* TRACKING */
 .tracking-form {
     display: flex;
     gap: 10px;
-    margin: 25px 0;
+    margin-bottom: 25px;
 }
 
 .tracking-form input {
     flex: 1;
-    padding: 14px;
+    padding: 14px 18px;
     border-radius: 30px;
     border: 1px solid #ddd;
+    outline: none;
 }
 
 /* TRUSTED */
@@ -151,6 +170,10 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.trusted-images {
+    display: flex;
 }
 
 .trusted-images img {
@@ -161,7 +184,7 @@ h1, h2, h3 {
     border: 2px solid #fff;
 }
 
-/* ================= SERVICES ================= */
+/* ================= SECTION TITLES ================= */
 .section-title {
     text-align: center;
     font-size: 36px;
@@ -174,6 +197,14 @@ h1, h2, h3 {
     color: var(--text-light);
 }
 
+.section-label {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+/* ================= SERVICES & INDUSTRIES ================= */
 .services-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -201,7 +232,7 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
+    margin: 0 auto 20px;
     font-size: 24px;
 }
 
@@ -218,20 +249,13 @@ h1, h2, h3 {
     align-items: center;
 }
 
-.section-label {
-    color: var(--accent-color);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 13px;
-}
-
 .why-text ul {
     list-style: none;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .why-text li {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-weight: 500;
 }
 
@@ -264,28 +288,95 @@ h1, h2, h3 {
     margin-bottom: 15px;
 }
 
-.testimonial-text {
+.testimonial-card p {
     font-style: italic;
     margin-bottom: 20px;
 }
 
-.testimonial-author {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+/* ================= CTA ================= */
+.cta {
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 30px;
+    text-align: center;
 }
 
-.testimonial-author img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+.cta p {
+    color: #e5e5e5;
+    margin: 15px 0 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.cta .btn-outline {
+    border-color: #fff;
+    color: #fff;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background: var(--dark-color);
+    color: #ccc;
+    padding: 70px 20px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-logo img {
+    width: 90px;
+    margin-bottom: 15px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: #ccc;
+    margin-right: 12px;
+    font-size: 18px;
+}
+
+.footer-links h3 {
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #fff;
 }
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
+    }
+
+    .auth-buttons {
+        display: none;
     }
 
     .nav {
@@ -295,12 +386,11 @@ h1, h2, h3 {
         left: 0;
         width: 100%;
         background: var(--secondary-color);
-        flex-direction: column;
         padding: 20px;
     }
 
     .nav.active {
-        display: flex;
+        display: block;
     }
 
     .nav-links {
@@ -313,9 +403,16 @@ h1, h2, h3 {
     .why-content {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 40px 25px;
     }
 
-    .services-container {
+    .hero-buttons,
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .services-container,
+    .footer-container {
         grid-template-columns: 1fr;
     }
 }
