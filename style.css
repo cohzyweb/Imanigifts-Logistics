@@ -309,7 +309,6 @@ input:focus-visible {
 /* ================= TESTIMONIALS ================= */
 .testimonials {
     background: #fff;
-    border-radius: 30px;
 }
 
 .testimonial-card {
@@ -317,6 +316,7 @@ input:focus-visible {
     margin: auto;
     background: var(--secondary-color);
     padding: 40px;
+    border-radius: 25px;
     text-align: center;
     animation: fadeUp 0.8s ease forwards;
 }
