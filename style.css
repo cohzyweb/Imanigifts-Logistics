@@ -317,7 +317,6 @@ input:focus-visible {
     margin: auto;
     background: var(--secondary-color);
     padding: 40px;
-    border-radius: 25px;
     text-align: center;
     animation: fadeUp 0.8s ease forwards;
 }
@@ -336,7 +335,6 @@ input:focus-visible {
 .cta {
     background: var(--primary-color);
     color: #fff;
-    border-radius: 30px;
     text-align: center;
     padding: 50px 20px;
 }
