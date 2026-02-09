@@ -497,3 +497,133 @@ input:focus-visible {
         width: 100%;
     }
 }
+
+/* ================= CONTACT HERO ================= */
+.contact-hero {
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: 0 0 40px 40px;
+}
+
+.contact-hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.contact-hero p {
+    opacity: 0.9;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+    padding: var(--section-padding);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* ================= CONTACT INFO ================= */
+.contact-info {
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.contact-info h2 {
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.info-item i {
+    width: 45px;
+    height: 45px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SOCIALS */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* ================= CONTACT FORM ================= */
+.contact-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.contact-form h2 {
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-hero h1 {
+        font-size: 36px;
+    }
+}
