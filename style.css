@@ -1,3 +1,6 @@
+/* ================= IMANI GIFT LOGISTICS - MASTER STYLESHEET ================= */
+/* Single, consolidated CSS file - no duplicates, no conflicts */
+
 :root {
     --primary-color: #065e45;
     --secondary-color: #fff7d6;
@@ -16,7 +19,7 @@
     box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
+/* ================= BODY & GLOBAL ================= */
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: var(--secondary-color);
@@ -25,7 +28,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* ================= GLOBAL ================= */
 img {
     max-width: 100%;
     display: block;
@@ -56,6 +58,8 @@ h1, h2, h3 {
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .btn-primary {
@@ -74,6 +78,16 @@ h1, h2, h3 {
     box-shadow: 0 6px 15px rgba(0,0,0,.15);
 }
 
+.btn-large {
+    padding: 16px 40px;
+    font-size: 16px;
+}
+
+.btn-light {
+    background: #fff;
+    color: var(--primary-color) !important;
+}
+
 /* ================= ACCESSIBILITY ================= */
 a:focus-visible,
 button:focus-visible,
@@ -82,7 +96,7 @@ input:focus-visible {
     outline-offset: 3px;
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER & NAVIGATION ================= */
 .header {
     background: var(--secondary-color);
     position: sticky;
@@ -102,7 +116,6 @@ input:focus-visible {
     width: 80px;
 }
 
-/* NAVIGATION */
 .nav-links {
     display: flex;
     gap: 30px;
@@ -134,7 +147,7 @@ input:focus-visible {
     cursor: pointer;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (Shared) ================= */
 .hero {
     background: linear-gradient(135deg, #ffffff 0%, var(--secondary-color) 100%);
     border-radius: 30px;
@@ -202,7 +215,7 @@ input:focus-visible {
     border-radius: 30px;
 }
 
-/* ================= TRUSTED ================= */
+/* ================= TRUSTED (Homepage) ================= */
 .trusted {
     display: flex;
     align-items: center;
@@ -241,7 +254,7 @@ input:focus-visible {
     font-size: 13px;
 }
 
-/* ================= SERVICES ================= */
+/* ================= SERVICES / CARDS (shared) ================= */
 .services-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -274,12 +287,151 @@ input:focus-visible {
     font-size: 24px;
 }
 
+/* ================= QUOTE FORM (Get a Quote page) ================= */
+.quote-section {
+    background: var(--secondary-color);
+}
+
+.quote-form-card {
+    background: #fff;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    animation: fadeUp 0.8s ease forwards;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 30px;
+}
+
+.form-full {
+    grid-column: span 2;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 15px;
+    background: #fafafa;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    background: #fff;
+}
+
+.form-group textarea {
+    border-radius: 25px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    align-items: center;
+}
+
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-right: 5px;
+}
+
+.submit-area {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-light);
+    font-size: 15px;
+}
+
+.privacy-note i {
+    color: var(--primary-color);
+}
+
+.secure-note {
+    margin-top: 25px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 /* ================= WHY CHOOSE US ================= */
 .why-choose-us {
     background: #fff;
     border-radius: 30px;
+    padding: 80px 20px;
 }
 
+.why-choose-us .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.why-choose-us h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.why-choose-us ul {
+    list-style: none;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.why-choose-us li {
+    margin-bottom: 14px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.why-choose-us i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+/* Legacy why-content (for homepage variant) */
 .why-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -306,14 +458,25 @@ input:focus-visible {
     border-radius: 20px;
 }
 
+/* ================= INDUSTRIES ================= */
+.industries {
+    background: var(--secondary-color);
+}
+
 /* ================= TESTIMONIALS ================= */
 .testimonials {
     background: #fff;
 }
 
+.testimonial-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 .testimonial-card {
-    max-width: 600px;
-    margin: auto;
     background: var(--secondary-color);
     padding: 40px;
     border-radius: 25px;
@@ -321,14 +484,26 @@ input:focus-visible {
     animation: fadeUp 0.8s ease forwards;
 }
 
-.stars {
-    color: gold;
-    margin-bottom: 15px;
-}
-
 .testimonial-card p {
     font-style: italic;
     margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.testimonial-card h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Legacy testimonial-card (single column variant) */
+.testimonial-card:not(.testimonial-container .testimonial-card) {
+    max-width: 600px;
+    margin: auto;
+}
+
+.stars {
+    color: gold;
+    margin-bottom: 15px;
 }
 
 /* ================= CTA ================= */
@@ -336,12 +511,18 @@ input:focus-visible {
     background: var(--primary-color);
     color: #fff;
     text-align: center;
-    padding: 50px 20px;
+    padding: 80px 20px;
+}
+
+.cta h2 {
+    font-size: 42px;
+    color: #fff;
 }
 
 .cta p {
     color: #e5e5e5;
     margin: 15px 0 30px;
+    font-size: 20px;
 }
 
 .cta-buttons {
@@ -353,6 +534,101 @@ input:focus-visible {
 .cta .btn-outline {
     border-color: #fff;
     color: #fff;
+}
+
+/* ================= CONTACT PAGE ================= */
+.contact-hero {
+    background: var(--primary-color);
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    border-radius: 0 0 40px 40px;
+}
+
+.contact-hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.contact-hero p {
+    opacity: 0.9;
+}
+
+.contact-section {
+    padding: var(--section-padding);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.contact-info {
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.contact-info h2 {
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.info-item i {
+    width: 45px;
+    height: 45px;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.contact-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.contact-form h2 {
+    margin-bottom: 25px;
 }
 
 /* ================= FOOTER ================= */
@@ -472,7 +748,8 @@ input:focus-visible {
     }
 
     .hero,
-    .why-content {
+    .why-content,
+    .contact-wrapper {
         grid-template-columns: 1fr;
         text-align: center;
         padding: 40px 25px;
@@ -483,8 +760,15 @@ input:focus-visible {
     }
 
     .services-container,
-    .footer-container {
+    .footer-container,
+    .testimonial-container,
+    .why-choose-us ul,
+    .form-grid {
         grid-template-columns: 1fr;
+    }
+
+    .form-full {
+        grid-column: span 1;
     }
 
     .tracking-form {
@@ -496,134 +780,18 @@ input:focus-visible {
     .tracking-form button {
         width: 100%;
     }
-}
 
-/* ================= CONTACT HERO ================= */
-.contact-hero {
-    background: var(--primary-color);
-    color: #fff;
-    text-align: center;
-    padding: 100px 20px;
-    border-radius: 0 0 40px 40px;
-}
-
-.contact-hero h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-
-.contact-hero p {
-    opacity: 0.9;
-}
-
-/* ================= CONTACT SECTION ================= */
-.contact-section {
-    padding: var(--section-padding);
-}
-
-.contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-/* ================= CONTACT INFO ================= */
-.contact-info {
-    background: #fff;
-    padding: 40px;
-    border-radius: 25px;
-}
-
-.contact-info h2 {
-    margin-bottom: 10px;
-}
-
-.contact-info p {
-    color: var(--text-light);
-    margin-bottom: 25px;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-weight: 500;
-}
-
-.info-item i {
-    width: 45px;
-    height: 45px;
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* SOCIALS */
-.social-links {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.social-links a {
-    width: 40px;
-    height: 40px;
-    background: var(--primary-color);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s ease;
-}
-
-.social-links a:hover {
-    background: var(--accent-color);
-    transform: translateY(-3px);
-}
-
-/* ================= CONTACT FORM ================= */
-.contact-form {
-    background: #fff;
-    padding: 40px;
-    border-radius: 25px;
-}
-
-.contact-form h2 {
-    margin-bottom: 25px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 14px 18px;
-    border-radius: 15px;
-    border: 1px solid #ddd;
-    font-family: inherit;
-    font-size: 14px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-    .contact-wrapper {
-        grid-template-columns: 1fr;
+    .submit-area {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .contact-hero h1 {
         font-size: 36px;
     }
+}
+
+/* ================= UTILITIES ================= */
+.nav-links a.active {
+    color: var(--primary-color);
 }

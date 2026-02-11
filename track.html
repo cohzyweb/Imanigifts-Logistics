@@ -20,7 +20,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- ===== EXTERNAL CSS ===== -->
+    <!-- EXTERNAL CSS - COMPLETE SEPARATION -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -61,7 +61,7 @@
         </h1>
 
         <p>
-            Tell us about your shipment — we’ll provide a competitive rate 
+            Tell us about your shipment — we'll provide a competitive rate 
             and a tailored plan within minutes. Fast, transparent, and reliable.
         </p>
 
@@ -70,7 +70,6 @@
             <a href="contact.html" class="btn btn-outline">Talk to Expert</a>
         </div>
 
-        <!-- tracking form – consistent with homepage -->
         <form class="tracking-form" aria-label="Shipment tracking form">
             <input 
                 type="text" 
@@ -96,27 +95,22 @@
         <div class="quote-form-card">
             <form action="#" method="POST">
                 <div class="form-grid">
-                    <!-- Full name -->
                     <div class="form-group">
                         <label for="fullname">Full Name *</label>
                         <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
                     </div>
-                    <!-- Email -->
                     <div class="form-group">
                         <label for="email">Business Email *</label>
                         <input type="email" id="email" name="email" placeholder="you@company.com" required>
                     </div>
-                    <!-- Company -->
                     <div class="form-group">
                         <label for="company">Company Name</label>
                         <input type="text" id="company" name="company" placeholder="Your business">
                     </div>
-                    <!-- Phone -->
                     <div class="form-group">
                         <label for="phone">Phone *</label>
                         <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required>
                     </div>
-                    <!-- Shipment type -->
                     <div class="form-group">
                         <label for="shipment-type">Shipment type *</label>
                         <select id="shipment-type" name="shipment_type" required>
@@ -128,7 +122,6 @@
                             <option value="express">Express courier</option>
                         </select>
                     </div>
-                    <!-- Service needed -->
                     <div class="form-group">
                         <label for="service">Service needed *</label>
                         <select id="service" name="service" required>
@@ -141,32 +134,26 @@
                             <option value="lastmile">Last mile delivery</option>
                         </select>
                     </div>
-                    <!-- Origin -->
                     <div class="form-group">
                         <label for="origin">Origin (city/country) *</label>
                         <input type="text" id="origin" name="origin" placeholder="e.g., Shanghai, China" required>
                     </div>
-                    <!-- Destination -->
                     <div class="form-group">
                         <label for="destination">Destination *</label>
                         <input type="text" id="destination" name="destination" placeholder="e.g., Los Angeles, USA" required>
                     </div>
-                    <!-- Weight -->
                     <div class="form-group">
                         <label for="weight">Total weight (kg) *</label>
                         <input type="number" id="weight" name="weight" placeholder="e.g., 500" step="0.1" required>
                     </div>
-                    <!-- Dimensions -->
                     <div class="form-group">
                         <label for="dimensions">Dimensions (LxWxH cm)</label>
                         <input type="text" id="dimensions" name="dimensions" placeholder="120x80x100">
                     </div>
-                    <!-- Cargo description (full width) -->
                     <div class="form-group form-full">
                         <label for="cargo">Cargo description *</label>
                         <textarea id="cargo" name="cargo" rows="4" placeholder="e.g., electronics, pallets, fragile items, temperature sensitive..." required></textarea>
                     </div>
-                    <!-- Additional services (full width) -->
                     <div class="form-group form-full">
                         <label>Additional services (optional)</label>
                         <div class="checkbox-group">
@@ -186,10 +173,10 @@
                     </div>
                 </div>
 
-                <!-- submit area -->
                 <div class="submit-area">
                     <button type="submit" class="btn btn-primary btn-large">
-                        <i class="fa-solid fa-calculator"></i>Get My Quote
+                        <i class="fa-solid fa-calculator"></i>
+                        Get My Quote
                     </button>
                     <span class="privacy-note">
                         <i class="fa-solid fa-lock"></i> No obligation, 100% free
@@ -315,7 +302,6 @@
     </div>
 </footer>
 
-<!-- Mobile menu toggle script -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggle = document.querySelector('.menu-toggle');

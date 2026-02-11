@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us – Imani Gift Logistics</title>
     <link rel="stylesheet" href="style.css">
     <link
         rel="stylesheet"
@@ -12,8 +12,34 @@
 </head>
 <body>
 
-<!-- HEADER (reuse your existing header here) -->
+<!-- ================= HEADER (reused from your existing design) ================= -->
+<header class="header">
+    <div class="container header-wrapper">
+        <div class="logo">
+            <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo">
+        </div>
 
+        <nav class="nav" aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="auth-buttons">
+            <a href="quote.html" class="btn btn-outline">Get a Quote</a>
+            <a href="track.html" class="btn btn-primary">Track Shipment</a>
+        </div>
+
+        <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<!-- ================= CONTACT HERO ================= -->
 <section class="contact-hero">
     <div class="container">
         <h1>Get in Touch</h1>
@@ -21,6 +47,7 @@
     </div>
 </section>
 
+<!-- ================= CONTACT SECTION ================= -->
 <section class="contact-section">
     <div class="container contact-wrapper">
 
@@ -81,6 +108,20 @@
 
     </div>
 </section>
+
+<!-- ================= MOBILE MENU SCRIPT ================= -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.nav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                this.setAttribute('aria-expanded', nav.classList.contains('active'));
+            });
+        }
+    });
+</script>
 
 </body>
 </html>
