@@ -6,6 +6,16 @@
     <title>Imani Gift Logistics</title>
 
     <meta name="description" content="Reliable logistics and supply chain solutions. Fast, secure shipping with real-time tracking worldwide.">
+    <meta name="keywords" content="logistics, freight forwarding, shipping, warehousing, supply chain">
+    <meta name="author" content="Imani Gift Logistics">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Imani Gift Logistics">
+    <meta property="og:description" content="Reliable logistics and supply chain solutions worldwide.">
+    <meta property="og:image" content="Imani_Logistics_1.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="Imani_Logistics_1.png" type="image/png">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -31,15 +41,16 @@
         </nav>
 
         <div class="auth-buttons">
-            <button class="btn btn-outline">Get a Quote</button>
-            <button class="btn btn-primary">Track Shipment</button>
+            <a href="quote.html" class="btn btn-outline">Get a Quote</a>
+            <a href="track.html" class="btn btn-primary">Track Shipment</a>
         </div>
 
-        <button class="menu-toggle" aria-label="Toggle menu">
+        <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 </header>
+
 
 <!-- ================= HERO ================= -->
 <section class="hero container">
@@ -51,16 +62,21 @@
 
         <p>
             Global freight, warehousing, and transportation you can trust.
-            From first mile to last mile we move your world.
+            From first mile to last mile, we move your world.
         </p>
 
         <div class="hero-buttons">
-            <button class="btn btn-primary"><a href="quote.html">Get a Quote</a></button>
-            <button class="btn btn-outline">Contact Us</button>
+            <a href="quote.html" class="btn btn-primary">Get a Quote</a>
+            <a href="contact.html" class="btn btn-outline">Contact Us</a>
         </div>
 
         <form class="tracking-form" aria-label="Shipment tracking form">
-            <input type="text" placeholder="Enter tracking number" required>
+            <input 
+                type="text" 
+                name="trackingNumber"
+                placeholder="Enter tracking number"
+                required
+            >
             <button type="submit" class="btn btn-primary">Track Now</button>
         </form>
     </div>
@@ -70,16 +86,83 @@
     </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section class="about">
+
+<!-- ================= INDUSTRIES ================= -->
+<section class="industries">
     <div class="container">
-        <h2 class="section-title">Your Trusted Logistics Partner</h2>
-        <p class="section-subtitle">
-            We provide comprehensive logistics solutions including freight forwarding,
-            warehousing, transportation, and distribution to streamline your supply chain.
-        </p>
+        <h2 class="section-title">Industries We Serve</h2>
+
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
+                <h3>Retail & E-commerce</h3>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Healthcare & Pharmaceuticals</h3>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-industry"></i></div>
+                <h3>Manufacturing</h3>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                <h3>Food & Beverage</h3>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-oil-can"></i></div>
+                <h3>Oil & Gas</h3>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-microchip"></i></div>
+                <h3>Technology & Electronics</h3>
+            </div>
+        </div>
     </div>
 </section>
+
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
+
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                <p>"Imani Logistics transformed our supply chain efficiency."</p>
+                <h4>– John D., Retail Manager</h4>
+            </div>
+
+            <div class="testimonial-card">
+                <p>"Reliable, professional, and always on time."</p>
+                <h4>– Sarah M., Manufacturing CEO</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="why-choose-us">
+    <div class="container">
+        <span class="section-label">Why Choose Us</span>
+        <h2>Why Businesses Choose Imani Gift Logistics</h2>
+
+        <ul>
+            <li><i class="fa-solid fa-check"></i> On-Time Delivery</li>
+            <li><i class="fa-solid fa-check"></i> Real-Time Tracking</li>
+            <li><i class="fa-solid fa-check"></i> Cost-Effective Shipping</li>
+            <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
+            <li><i class="fa-solid fa-check"></i> Certified & Experienced Team</li>
+        </ul>
+    </div>
+</section>
+
 
 <!-- ================= SERVICES ================= -->
 <section class="services">
@@ -127,90 +210,6 @@
     </div>
 </section>
 
-<!-- ================= WHY CHOOSE US ================= -->
-<section class="why-choose-us">
-    <div class="container">
-        <div class="why-content">
-            <div class="why-text">
-                <span class="section-label">Why Choose Us</span>
-                <h2>Why Businesses Choose Us</h2>
-
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> On-Time Delivery</li>
-                    <li><i class="fa-solid fa-check"></i> Real-Time Tracking</li>
-                    <li><i class="fa-solid fa-check"></i> Cost-Effective Shipping</li>
-                    <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
-                    <li><i class="fa-solid fa-check"></i> Certified & Experienced Team</li>
-                </ul>
-            </div>
-
-            <div class="why-image">
-                <img src="why-choose-us.png" alt="Why choose us">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= INDUSTRIES ================= -->
-<section class="industries">
-  <div class="container">
-    <h2 class="section-title">Industries We Serve</h2>
-
-    <div class="services-container">
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-        Retail & E-commerce
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-        Healthcare & Pharmaceuticals
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-industry"></i></div>
-        Manufacturing
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-utensils"></i></div>
-        Food & Beverage
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-        Oil & Gas
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon"><i class="fas fa-microchip"></i></div>
-        Technology & Electronics
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
-    <div class="container">
-        <h2 class="section-title">What Our Clients Say</h2>
-
-        <div class="testimonial-card">
-            <div class="stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-
-            <p>
-                Imani Logistics has transformed our supply chain with their reliable and
-                transparent delivery services.
-            </p>
-
-            <strong>— Happy Client</strong>
-        </div>
-    </div>
-</section>
 
 <!-- ================= CTA ================= -->
 <section class="cta">
@@ -219,18 +218,20 @@
         <p>Request a quote or speak with our logistics experts today.</p>
 
         <div class="cta-buttons">
-            <button class="btn btn-primary">Request a Quote</button>
-            <button class="btn btn-outline">Contact Us</button>
+            <a href="quote.html" class="btn btn-primary">Request a Quote</a>
+            <a href="contact.html" class="btn btn-outline">Contact Us</a>
         </div>
     </div>
 </section>
+
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
     <div class="container">
         <div class="footer-container">
+
             <div class="footer-logo">
-                <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics">
+                <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo" loading="lazy">
                 <p>Smart, safe, and efficient logistics solutions.</p>
 
                 <div class="social-icons">
@@ -244,7 +245,7 @@
             <div class="footer-links">
                 <h3>Company</h3>
                 <ul>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">News</a></li>
                 </ul>
@@ -254,10 +255,11 @@
                 <h3>Support</h3>
                 <ul>
                     <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
+
         </div>
     </div>
 </footer>
