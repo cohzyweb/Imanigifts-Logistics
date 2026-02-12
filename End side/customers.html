@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers | Imani Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Imani Admin</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="admin.html">
+                    <i class="fas fa-chart-line"></i> Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="shipments.html">
+                    <i class="fas fa-box"></i> Shipments
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="customers.html">
+                    <i class="fas fa-users"></i> Customers
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fas fa-headset"></i> Customer Service
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fas fa-file-invoice"></i> Quotes
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+
+        <!-- ===== Topbar ===== -->
+        <header class="topbar">
+            <h1>Customer Management</h1>
+
+            <div class="admin-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+
+            <button class="btn-primary" onclick="openModal()">
+                <i class="fas fa-user-plus"></i> Add Customer
+            </button>
+        </header>
+
+
+        <!-- ===== Search ===== -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search by Name or Email...">
+            <button class="btn-primary">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+
+        <!-- ===== Customers Table ===== -->
+        <section class="table-section">
+            <h2>All Customers</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>#CUST001</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>+2348012345678</td>
+                        <td>Lagos, NG</td>
+                        <td>
+                            <button class="btn-sm edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-sm delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>#CUST002</td>
+                        <td>Sarah M.</td>
+                        <td>sarah@example.com</td>
+                        <td>+2348098765432</td>
+                        <td>Abuja, NG</td>
+                        <td>
+                            <button class="btn-sm edit"><i class="fas fa-edit"></i></button>
+                            <button class="btn-sm delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+
+<!-- ===== Add Customer Modal ===== -->
+<div class="modal" id="customerModal">
+    <div class="modal-content">
+        <h2>Add New Customer</h2>
+
+        <form id="customerForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="text" placeholder="Phone Number" required>
+            <input type="text" placeholder="Location (City, Country)" required>
+
+            <div class="modal-buttons">
+                <button type="button" class="btn-outline" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn-primary">Save Customer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+function openModal() {
+    document.getElementById("customerModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("customerModal").style.display = "none";
+}
+
+// Prevent form refresh (ready for backend integration)
+document.getElementById("customerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Customer saved successfully!");
+    closeModal();
+});
+</script>
+
+</body>
+</html>
