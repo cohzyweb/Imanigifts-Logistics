@@ -149,37 +149,32 @@ input:focus-visible {
 
 /* ================= MOBILE TAGLINE (MARQUEE STRIP) ================= */
 
-.mobile-tagline {
-    display: none; /* Hidden on desktop */
-    width: 100%;
-    background: var(--primary-color);
-    color: #fff;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    padding: 8px 0;
-    position: relative;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-}
+ .mobile-tagline .marquee {
+       display: flex;
+       justify-content: center;
+       overflow: hidden;
+     }
 
-.mobile-tagline .marquee {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scrollTagline 22s linear infinite;
-}
+     .mobile-tagline .ticker {
+       display: inline-block;
+       padding-left: 100%;
+       white-space: nowrap;
+       animation: scrollTagline 18s linear infinite;
+     }
 
-/* Smooth continuous scroll */
-@keyframes scrollTagline {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+     .mobile-tagline .ticker::after {
+       content: attr(data-text);
+       padding-left: 60px;
+     }
 
+     @keyframes scrollTagline {
+       0% {
+         transform: translateX(0);
+       }
+       100% {
+         transform: translateX(-100%);
+       }
+     }
 /* ================= HERO (Shared) ================= */
 .hero {
     background: linear-gradient(135deg, #ffffff 0%, var(--secondary-color) 100%);
