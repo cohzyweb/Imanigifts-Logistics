@@ -52,218 +52,94 @@
     </div>
 </header>
 
-<!-- ================= QUOTE HERO ================= -->
-<section class="hero container">
-    <div class="hero-content">
-        <h1>
-            Get Your Personalized <br>
-            Logistics Quote
-        </h1>
-
-        <p>
-            Tell us about your shipment — we'll provide a competitive rate 
-            and a tailored plan within minutes. Fast, transparent, and reliable.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#quote-form" class="btn btn-primary">Start Quote Form</a>
-            <a href="contact.html" class="btn btn-outline">Talk to Expert</a>
-        </div>
-
-        <form class="tracking-form" aria-label="Shipment tracking form">
-            <input 
-                type="text" 
-                name="trackingNumber"
-                placeholder="Enter tracking number"
-                required
-            >
-            <button type="submit" class="btn btn-primary">Track Now</button>
-        </form>
-    </div>
-
-    <div class="hero-image">
-        <img src="track.jpeg" alt="Logistics delivery truck – get a quote">
+<!<!-- ================= TRACKING HERO ================= -->
+<section class="contact-hero">
+    <div class="container">
+        <h1>Track Your Shipment</h1>
+        <p>Enter your tracking number below to get real-time shipment updates.</p>
     </div>
 </section>
 
-<!-- ================= QUOTE FORM SECTION ================= -->
-<section id="quote-form" class="quote-section">
+<!-- ================= TRACKING SECTION ================= -->
+<section class="contact-section">
     <div class="container">
-        <h2 class="section-title">Request Your Instant Quote</h2>
-        <p class="section-subtitle">Fill out the form below. Our team will respond within 2 hours.</p>
 
-        <div class="quote-form-card">
-            <form action="#" method="POST">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="fullname">Full Name *</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Business Email *</label>
-                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" placeholder="Your business">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="shipment-type">Shipment type *</label>
-                        <select id="shipment-type" name="shipment_type" required>
-                            <option value="" disabled selected>– Select –</option>
-                            <option value="air">Air freight</option>
-                            <option value="ocean">Ocean freight</option>
-                            <option value="land">Land / Trucking</option>
-                            <option value="rail">Rail</option>
-                            <option value="express">Express courier</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service needed *</label>
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected>– Select –</option>
-                            <option value="forwarding">Freight forwarding</option>
-                            <option value="warehousing">Warehousing</option>
-                            <option value="distribution">Distribution</option>
-                            <option value="customs">Customs clearance</option>
-                            <option value="fulfillment">E‑commerce fulfillment</option>
-                            <option value="lastmile">Last mile delivery</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="origin">Origin (city/country) *</label>
-                        <input type="text" id="origin" name="origin" placeholder="e.g., Shanghai, China" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="destination">Destination *</label>
-                        <input type="text" id="destination" name="destination" placeholder="e.g., Los Angeles, USA" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="weight">Total weight (kg) *</label>
-                        <input type="number" id="weight" name="weight" placeholder="e.g., 500" step="0.1" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dimensions">Dimensions (LxWxH cm)</label>
-                        <input type="text" id="dimensions" name="dimensions" placeholder="120x80x100">
-                    </div>
-                    <div class="form-group form-full">
-                        <label for="cargo">Cargo description *</label>
-                        <textarea id="cargo" name="cargo" rows="4" placeholder="e.g., electronics, pallets, fragile items, temperature sensitive..." required></textarea>
-                    </div>
-                    <div class="form-group form-full">
-                        <label>Additional services (optional)</label>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" name="extra_insurance" value="insurance"> Insurance
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_packaging" value="packaging"> Special packaging
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_tracking" value="tracking"> Premium tracking
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_documentation" value="docs"> Customs documentation
-                            </label>
-                        </div>
-                    </div>
-                </div>
+        <div class="quote-form-card" style="max-width: 700px; margin: 0 auto;">
 
-                <div class="submit-area">
+            <!-- Tracking Form -->
+            <form id="trackingForm">
+                <div class="tracking-form">
+                    <input type="text" id="trackingNumber" 
+                        placeholder="Enter Tracking Number (e.g., IGL123456789)" 
+                        required>
                     <button type="submit" class="btn btn-primary btn-large">
-                        <i class="fa-solid fa-calculator"></i>
-                        Get My Quote
+                        <i class="fa-solid fa-location-dot"></i> Track Now
                     </button>
-                    <span class="privacy-note">
-                        <i class="fa-solid fa-lock"></i> No obligation, 100% free
+                </div>
+            </form>
+
+            <!-- Tracking Result -->
+            <div id="trackingResult" style="display:none; margin-top:40px;">
+
+                <!-- Status Badge -->
+                <div style="text-align:center; margin-bottom:25px;">
+                    <span style="
+                        background: var(--primary-color);
+                        color:#fff;
+                        padding:10px 20px;
+                        border-radius:30px;
+                        font-weight:600;">
+                        In Transit
                     </span>
                 </div>
-                <p class="secure-note">
-                    <i class="fa-solid fa-shield"></i> Your information is secure. We respect your privacy.
-                </p>
-            </form>
-        </div>
-    </div>
-</section>
 
-<!-- ================= WHY CHOOSE US ================= -->
-<section class="why-choose-us">
-    <div class="container">
-        <span class="section-label">Why Choose Us</span>
-        <h2>Why Businesses Get Their Quotes From Imani Gift Logistics</h2>
-        <ul>
-            <li><i class="fa-solid fa-check"></i> Transparent, All‑Inclusive Pricing</li>
-            <li><i class="fa-solid fa-check"></i> Real‑Time Rates & Space Availability</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated Logistics Consultant</li>
-            <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
-            <li><i class="fa-solid fa-check"></i> Certified & Experienced Team</li>
-            <li><i class="fa-solid fa-check"></i> Customs Expertise Included</li>
-        </ul>
-    </div>
-</section>
+                <!-- Shipment Details -->
+                <div class="service-card" style="text-align:left;">
+                    <h3>Shipment Details</h3>
+                    <p><strong>Tracking ID:</strong> IGL123456789</p>
+                    <p><strong>Origin:</strong> London, UK</p>
+                    <p><strong>Destination:</strong> Manchester, UK</p>
+                    <p><strong>Estimated Delivery:</strong> 24 February 2026</p>
+                </div>
 
-<!-- ================= INDUSTRIES ================= -->
-<section class="industries">
-    <div class="container">
-        <h2 class="section-title">Industries We Quote For</h2>
-        <div class="services-container">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h3>Retail & E-commerce</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                <h3>Healthcare & Pharma</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-industry"></i></div>
-                <h3>Manufacturing</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-utensils"></i></div>
-                <h3>Food & Beverage</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-                <h3>Oil & Gas</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-microchip"></i></div>
-                <h3>Tech & Electronics</h3>
+                <!-- Progress Timeline -->
+                <div style="margin-top:30px;">
+                    <h3 style="margin-bottom:20px;">Shipment Progress</h3>
+
+                    <ul style="list-style:none; padding-left:0;">
+                        <li style="margin-bottom:15px;">
+                            <i class="fa-solid fa-circle-check" style="color:var(--primary-color);"></i>
+                            Order Received – 18 Feb 2026
+                        </li>
+                        <li style="margin-bottom:15px;">
+                            <i class="fa-solid fa-circle-check" style="color:var(--primary-color);"></i>
+                            Dispatched from Warehouse – 19 Feb 2026
+                        </li>
+                        <li style="margin-bottom:15px;">
+                            <i class="fa-solid fa-truck" style="color:var(--accent-color);"></i>
+                            In Transit – 21 Feb 2026
+                        </li>
+                        <li style="opacity:0.5;">
+                            <i class="fa-regular fa-circle"></i>
+                            Out for Delivery
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
 
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
-    <div class="container">
-        <h2 class="section-title">What Clients Say About Our Quote Process</h2>
-        <div class="testimonial-container">
-            <div class="testimonial-card">
-                <p>"Got a competitive quote within 45 minutes. Smooth and detailed."</p>
-                <h4>– Maria L., Procurement Lead</h4>
-            </div>
-            <div class="testimonial-card">
-                <p>"The form is clear, and the follow‑up was excellent. Highly recommend."</p>
-                <h4>– David K., Operations Manager</h4>
-            </div>
-        </div>
     </div>
 </section>
 
 <!-- ================= CTA ================= -->
 <section class="cta">
     <div class="container">
-        <h2>Ready to Ship?</h2>
-        <p>Get a customized quote or speak directly with a logistics specialist.</p>
+        <h2>Need Assistance?</h2>
+        <p>Contact our logistics support team for immediate help.</p>
         <div class="cta-buttons">
-            <a href="#quote-form" class="btn btn-primary btn-light">Request a Quote</a>
-            <a href="contact.html" class="btn btn-outline">Contact Us</a>
+            <a href="contact.html" class="btn btn-primary btn-light">Contact Support</a>
+            <a href="quote.html" class="btn btn-outline">Request a Quote</a>
         </div>
     </div>
 </section>
