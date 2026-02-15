@@ -165,23 +165,54 @@ input:focus-visible {
 }
 
 /* ================= HEADER & NAVIGATION ================= */
+/* ===============================
+   HEADER BASE
+================================= */
+
 .header {
     background: var(--secondary-color);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
 }
+
+/* Shadow effect when scrolling */
+.header.scrolled {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* ===============================
+   HEADER WRAPPER
+================================= */
 
 .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    transition: height 0.3s ease;
 }
 
+/* Shrink header slightly on scroll */
+.header.scrolled .header-wrapper {
+    height: 65px;
+}
+
+/* ===============================
+   LOGO
+================================= */
+
 .logo img {
-    width: 80px;
+    width: clamp(70px, 8vw, 90px);
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Slight shrink on scroll */
+.header.scrolled .logo img {
+    transform: scale(0.9);
 }
 
 .nav-links {
