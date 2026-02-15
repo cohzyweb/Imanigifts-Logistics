@@ -845,8 +845,31 @@ input:focus-visible {
 }
 
 /* ================= RESPONSIVE ================= */
+
+
+/* ===============================
+   MOBILE (≤ 768px)
+================================= */
 @media (max-width: 768px) {
 
+    /* Prevent horizontal scroll */
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    img, video {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Mobile Header */
     .menu-toggle {
         display: block;
     }
@@ -855,17 +878,28 @@ input:focus-visible {
         display: none;
     }
 
+    .header-wrapper {
+        padding: 15px 20px;
+        height: auto;
+    }
+
+    .logo img {
+        width: clamp(90px, 22vw, 130px);
+        height: auto;
+    }
+
+    /* Navigation */
     .nav {
         display: none;
         position: absolute;
-        top: 80px;
+        top: 100%;
         left: 0;
         width: 100%;
         background: var(--secondary-color);
         padding: 20px;
-        transition: opacity 0.3s ease, transform 0.3s ease;
         opacity: 0;
         transform: translateY(-10px);
+        transition: 0.3s ease;
     }
 
     .nav.active {
@@ -880,7 +914,7 @@ input:focus-visible {
         gap: 20px;
     }
 
-    /* Stack section grids cleanly */
+    /* Stack all grid layouts */
     .section-grid,
     .hero,
     .why-content,
@@ -889,54 +923,62 @@ input:focus-visible {
     .testimonial-container,
     .why-choose-us ul,
     .form-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    /* ===============================
+       LOGISTICS SERVICES SECTION
+    ================================= */
+    .logistics-services {
+        padding: 50px 20px;
         text-align: center;
     }
 
+    .services-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 25px;
+        width: 100%;
+    }
 
-.logo img {
-    width: 110px; 
-    height: auto;
-}
+    .service-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 20px;
+        margin: 0 auto;
+    }
 
-.header-wrapper {
-    padding: 15px 0;
-}
+    .service-card img {
+        max-width: 100%;
+        height: auto;
+    }
 
-
-    /* Remove gallery strips completely */
+    /* Hide gallery strips ONLY on mobile */
     .gallery-strip,
     .image-strip,
     .trusted-images,
-    .hero-gallery {
+    .hero-gallery,
+    .gallery-strip-1,
+    .gallery-strip-2 {
         display: none !important;
     }
 
-    /* Hide Gallery Strip 1 & 2 on mobile only */
-@media (max-width: 768px) {
-
-    .gallery-strip-1,
-    .gallery-strip-2 {
-        display: none;
-    }
-
-}
-
-
-    /* Ensure section images appear above text */
+    /* Reorder section image */
     .section-image {
         order: -1;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
 
+    /* Buttons stacked */
     .cta-buttons {
         flex-direction: column;
+        gap: 15px;
     }
 
-    .form-full {
-        grid-column: span 1;
-    }
-
+    /* Forms */
     .tracking-form {
         flex-direction: column;
         gap: 15px;
@@ -949,10 +991,69 @@ input:focus-visible {
 
     .submit-area {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 10px;
     }
 
     .contact-hero h1 {
-        font-size: 36px;
+        font-size: clamp(28px, 5vw, 36px);
+    }
+}
+
+
+/* ===============================
+   SMALL MOBILE (≤ 480px)
+================================= */
+@media (max-width: 480px) {
+
+    .logo img {
+        width: clamp(80px, 30vw, 100px);
+    }
+
+    .contact-hero h1 {
+        font-size: 26px;
+    }
+
+    .section-grid,
+    .hero,
+    .why-content,
+    .contact-wrapper,
+    .footer-container,
+    .testimonial-container,
+    .why-choose-us ul,
+    .form-grid {
+        padding: 30px 15px;
+    }
+
+    .logistics-services {
+        padding: 40px 15px;
+    }
+
+    .service-card {
+        padding: 20px 15px;
+    }
+
+    .cta-buttons {
+        gap: 12px;
+    }
+}
+
+
+/* ===============================
+   TABLET (≤ 1024px)
+================================= */
+@media (max-width: 1024px) {
+
+    .section-grid,
+    .hero,
+    .why-content,
+    .contact-wrapper,
+    .footer-container,
+    .testimonial-container,
+    .form-grid {
+        gap: 40px;
+    }
+
+    .logo img {
+        width: clamp(100px, 12vw, 150px);
     }
 }
