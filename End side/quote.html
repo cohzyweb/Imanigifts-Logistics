@@ -2,296 +2,192 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Quotes | Imani Gift Logistics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get a Quote – Imani Gift Logistics</title>
-
-    <meta name="description" content="Request a personalized logistics quote. Fast, secure shipping and supply chain solutions tailored to your cargo.">
-    <meta name="keywords" content="logistics quote, freight rate, shipping cost, cargo pricing, supply chain quote">
-    <meta name="author" content="Imani Gift Logistics">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Get a Quote | Imani Gift Logistics">
-    <meta property="og:description" content="Reliable logistics and supply chain solutions worldwide. Request your quote now.">
-    <meta property="og:image" content="Imani_Logistics_1.png">
-
-    <!-- Favicon -->
-    <link rel="icon" href="Imani_Logistics_1.png" type="image/png">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- ===== EXTERNAL CSS ===== -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="header">
-    <div class="container header-wrapper">
+<div class="admin-container">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
         <div class="logo">
-            <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo">
+            <h2>Imani Admin</h2>
         </div>
 
-        <nav class="nav" aria-label="Main navigation">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="service.html">Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-
-        <div class="auth-buttons">
-            <a href="quote.html" class="btn btn-outline active">Get a Quote</a>
-            <a href="track.html" class="btn btn-primary">Track Shipment</a>
-        </div>
-
-        <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-</header>
-
-<!-- ================= QUOTE FORM SECTION ================= -->
-<section id="quote-form" class="quote-section">
-    <div class="container">
-        <h2 class="section-title">Request Your Instant Quote</h2>
-        <p class="section-subtitle">Fill out the form below. Our team will respond within 2 hours.</p>
-
-        <div class="quote-form-card">
-            <form action="#" method="POST">
-                <div class="form-grid">
-                    <!-- Full name -->
-                    <div class="form-group">
-                        <label for="fullname">Full Name *</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
-                    </div>
-                    <!-- Email -->
-                    <div class="form-group">
-                        <label for="email">Business Email *</label>
-                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
-                    </div>
-                    <!-- Company -->
-                    <div class="form-group">
-                        <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" placeholder="Your business">
-                    </div>
-                    <!-- Phone -->
-                    <div class="form-group">
-                        <label for="phone">Phone *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required>
-                    </div>
-                    <!-- Shipment type -->
-                    <div class="form-group">
-                        <label for="shipment-type">Shipment type *</label>
-                        <select id="shipment-type" name="shipment_type" required>
-                            <option value="" disabled selected>– Select –</option>
-                            <option value="air">Air freight</option>
-                            <option value="ocean">Ocean freight</option>
-                            <option value="land">Land / Trucking</option>
-                            <option value="rail">Rail</option>
-                            <option value="express">Express courier</option>
-                        </select>
-                    </div>
-                    <!-- Service needed -->
-                    <div class="form-group">
-                        <label for="service">Service needed *</label>
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected>– Select –</option>
-                            <option value="forwarding">Freight forwarding</option>
-                            <option value="warehousing">Warehousing</option>
-                            <option value="distribution">Distribution</option>
-                            <option value="customs">Customs clearance</option>
-                            <option value="fulfillment">E‑commerce fulfillment</option>
-                            <option value="lastmile">Last mile delivery</option>
-                        </select>
-                    </div>
-                    <!-- Origin -->
-                    <div class="form-group">
-                        <label for="origin">Origin (city/country) *</label>
-                        <input type="text" id="origin" name="origin" placeholder="e.g., Shanghai, China" required>
-                    </div>
-                    <!-- Destination -->
-                    <div class="form-group">
-                        <label for="destination">Destination *</label>
-                        <input type="text" id="destination" name="destination" placeholder="e.g., Los Angeles, USA" required>
-                    </div>
-                    <!-- Weight -->
-                    <div class="form-group">
-                        <label for="weight">Total weight (kg) *</label>
-                        <input type="number" id="weight" name="weight" placeholder="e.g., 500" step="0.1" required>
-                    </div>
-                    <!-- Dimensions -->
-                    <div class="form-group">
-                        <label for="dimensions">Dimensions (LxWxH cm)</label>
-                        <input type="text" id="dimensions" name="dimensions" placeholder="120x80x100">
-                    </div>
-                    <!-- Cargo description (full width) -->
-                    <div class="form-group form-full">
-                        <label for="cargo">Cargo description *</label>
-                        <textarea id="cargo" name="cargo" rows="4" placeholder="e.g., electronics, pallets, fragile items, temperature sensitive..." required></textarea>
-                    </div>
-                    <!-- Additional services (full width) -->
-                    <div class="form-group form-full">
-                        <label>Additional services (optional)</label>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" name="extra_insurance" value="insurance"> Insurance
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_packaging" value="packaging"> Special packaging
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_tracking" value="tracking"> Premium tracking
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_documentation" value="docs"> Customs documentation
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- submit area -->
-                <div class="submit-area">
-                    <button type="submit" class="btn btn-primary btn-large">
-                        <i class="fa-solid fa-calculator"></i>Get My Quote
-                    </button>
-                    <span class="privacy-note">
-                        <i class="fa-solid fa-lock"></i> No obligation, 100% free
-                    </span>
-                </div>
-                <p class="secure-note">
-                    <i class="fa-solid fa-shield"></i> Your information is secure. We respect your privacy.
-                </p>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- ================= WHY CHOOSE US ================= -->
-<section class="why-choose-us">
-    <div class="container">
-        <span class="section-label">Why Choose Us</span>
-        <h2>Why Businesses Get Their Quotes From Imani Gift Logistics</h2>
-        <ul>
-            <li><i class="fa-solid fa-check"></i> Transparent, All‑Inclusive Pricing</li>
-            <li><i class="fa-solid fa-check"></i> Real‑Time Rates & Space Availability</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated Logistics Consultant</li>
-            <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
-            <li><i class="fa-solid fa-check"></i> Certified & Experienced Team</li>
-            <li><i class="fa-solid fa-check"></i> Customs Expertise Included</li>
+        <ul class="sidebar-menu">
+            <li><a href="admin.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="shipments.html"><i class="fas fa-box"></i> Shipments</a></li>
+            <li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
+            <li><a href="customer-service.html"><i class="fas fa-headset"></i> Customer Service</a></li>
+            <li class="active"><a href="quotes.html"><i class="fas fa-file-invoice"></i> Quotes</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
-    </div>
-</section>
+    </aside>
 
-<!-- ================= INDUSTRIES ================= -->
-<section class="industries">
-    <div class="container">
-        <h2 class="section-title">Industries We Quote For</h2>
-        <div class="services-container">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h3>Retail & E-commerce</h3>
+
+    <!-- ===== Main Content ===== -->
+    <main class="main-content">
+
+        <!-- ===== Top Bar ===== -->
+        <header class="topbar">
+            <h1>Quote Management</h1>
+            <div class="admin-profile">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
             </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                <h3>Healthcare & Pharma</h3>
+        </header>
+
+
+        <!-- ===== Quote Stats ===== -->
+        <section class="stats">
+            <div class="card">
+                <h3>Total Quotes</h3>
+                <p>124</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-industry"></i></div>
-                <h3>Manufacturing</h3>
+
+            <div class="card">
+                <h3>Pending</h3>
+                <p>34</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-utensils"></i></div>
-                <h3>Food & Beverage</h3>
+
+            <div class="card">
+                <h3>Approved</h3>
+                <p>68</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-                <h3>Oil & Gas</h3>
+
+            <div class="card">
+                <h3>Rejected</h3>
+                <p>22</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-microchip"></i></div>
-                <h3>Tech & Electronics</h3>
+        </section>
+
+
+        <!-- ===== Quote Filters ===== -->
+        <section class="table-section">
+            <h2>All Quotes</h2>
+
+            <div style="margin:15px 0;">
+                <button class="btn" onclick="filterQuotes('all')">All</button>
+                <button class="btn" onclick="filterQuotes('pending')">Pending</button>
+                <button class="btn" onclick="filterQuotes('approved')">Approved</button>
+                <button class="btn" onclick="filterQuotes('rejected')">Rejected</button>
             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quote ID</th>
+                        <th>Customer</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="quoteTable">
+
+                    <tr data-status="pending">
+                        <td>#QT1001</td>
+                        <td>John Doe</td>
+                        <td>Lagos</td>
+                        <td>Abuja</td>
+                        <td>₦45,000</td>
+                        <td><span class="badge pending">Pending</span></td>
+                        <td>
+                            <button class="btn" onclick="openModal('QT1001','John Doe','Lagos','Abuja','₦45,000','Pending')">View</button>
+                        </td>
+                    </tr>
+
+                    <tr data-status="approved">
+                        <td>#QT1002</td>
+                        <td>Sarah M.</td>
+                        <td>Port Harcourt</td>
+                        <td>Kano</td>
+                        <td>₦72,000</td>
+                        <td><span class="badge delivered">Approved</span></td>
+                        <td>
+                            <button class="btn" onclick="openModal('QT1002','Sarah M.','Port Harcourt','Kano','₦72,000','Approved')">View</button>
+                        </td>
+                    </tr>
+
+                    <tr data-status="rejected">
+                        <td>#QT1003</td>
+                        <td>Michael K.</td>
+                        <td>Ibadan</td>
+                        <td>Enugu</td>
+                        <td>₦38,500</td>
+                        <td><span class="badge pending">Rejected</span></td>
+                        <td>
+                            <button class="btn" onclick="openModal('QT1003','Michael K.','Ibadan','Enugu','₦38,500','Rejected')">View</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+
+<!-- ===== Quote Modal ===== -->
+<div class="modal" id="quoteModal">
+    <div class="modal-content">
+        <h2>Quote Details</h2>
+
+        <p><strong>Quote ID:</strong> <span id="modalId"></span></p>
+        <p><strong>Customer:</strong> <span id="modalCustomer"></span></p>
+        <p><strong>Origin:</strong> <span id="modalOrigin"></span></p>
+        <p><strong>Destination:</strong> <span id="modalDestination"></span></p>
+        <p><strong>Amount:</strong> <span id="modalAmount"></span></p>
+        <p><strong>Status:</strong> <span id="modalStatus"></span></p>
+
+        <div style="margin-top:20px;">
+            <button class="btn" onclick="closeModal()">Close</button>
         </div>
     </div>
-</section>
+</div>
 
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
-    <div class="container">
-        <h2 class="section-title">What Clients Say About Our Quote Process</h2>
-        <div class="testimonial-container">
-            <div class="testimonial-card">
-                <p>"Got a competitive quote within 45 minutes. Smooth and detailed."</p>
-                <h4>– Maria L., Procurement Lead</h4>
-            </div>
-            <div class="testimonial-card">
-                <p>"The form is clear, and the follow‑up was excellent. Highly recommend."</p>
-                <h4>– David K., Operations Manager</h4>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- ================= CTA ================= -->
-<section class="cta">
-    <div class="container">
-        <h2>Ready to Ship?</h2>
-        <p>Get a customized quote or speak directly with a logistics specialist.</p>
-        <div class="cta-buttons">
-            <a href="#quote-form" class="btn btn-primary btn-light">Request a Quote</a>
-            <a href="contact.html" class="btn btn-outline">Contact Us</a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo" loading="lazy">
-                <p>Smart, safe, and efficient logistics solutions.</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">News</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Mobile menu toggle script -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
-        if (toggle && nav) {
-            toggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                this.setAttribute('aria-expanded', nav.classList.contains('active'));
-            });
+
+function filterQuotes(status) {
+    const rows = document.querySelectorAll("#quoteTable tr");
+
+    rows.forEach(row => {
+        if (status === "all") {
+            row.style.display = "";
+        } else {
+            row.style.display = row.dataset.status === status ? "" : "none";
         }
     });
+}
+
+function openModal(id, customer, origin, destination, amount, status) {
+    document.getElementById("modalId").innerText = id;
+    document.getElementById("modalCustomer").innerText = customer;
+    document.getElementById("modalOrigin").innerText = origin;
+    document.getElementById("modalDestination").innerText = destination;
+    document.getElementById("modalAmount").innerText = amount;
+    document.getElementById("modalStatus").innerText = status;
+
+    document.getElementById("quoteModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("quoteModal").style.display = "none";
+}
+
 </script>
 
 </body>
