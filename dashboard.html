@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Imani Logistics UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Imani Logistics UK</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li class="active">
+                <a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="quote.html"><i class="fas fa-file-invoice"></i> Quote Requests</a>
+            </li>
+            <li>
+                <a href="shipments.html"><i class="fas fa-truck"></i> Shipments</a>
+            </li>
+            <li>
+                <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li>
+                <a href="customer-service.html"><i class="fas fa-headset"></i> Customer Service</a>
+            </li>
+            <li>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- Topbar -->
+        <div class="topbar">
+            <h1>Dashboard Overview</h1>
+            <div class="admin-profile">
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </div>
+
+        <!-- ================= STATS ================= -->
+        <section class="stats">
+            <div class="card">
+                <h3>Total Shipments</h3>
+                <p>128</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending Quotes</h3>
+                <p>14</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Customers</h3>
+                <p>76</p>
+            </div>
+
+            <div class="card">
+                <h3>Revenue (This Month)</h3>
+                <p>£12,400</p>
+            </div>
+        </section>
+
+        <!-- ================= QUOTE REQUESTS ================= -->
+        <section class="table-section">
+            <div class="section-header">
+                <h2>Recent Quote Requests</h2>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search quotes...">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Route</th>
+                        <th>Shipment Type</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>
+                            Oliver Smith <br>
+                            <small>oliver.smith@email.co.uk</small>
+                        </td>
+                        <td>Manchester → London</td>
+                        <td>Road Freight</td>
+                        <td><span class="badge pending">Pending</span></td>
+                        <td>
+                            <button class="btn btn-primary">Review</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Amelia Johnson <br>
+                            <small>amelia.j@email.co.uk</small>
+                        </td>
+                        <td>Birmingham → Glasgow</td>
+                        <td>Road Freight</td>
+                        <td><span class="badge transit">Reviewed</span></td>
+                        <td>
+                            <button class="btn btn-outline">View</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ================= SHIPMENTS ================= -->
+        <section class="table-section">
+            <div class="section-header">
+                <h2>Recent Shipments</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tracking ID</th>
+                        <th>Customer</th>
+                        <th>Destination</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>IMUK-23455</td>
+                        <td>Harry Thompson</td>
+                        <td>Edinburgh</td>
+                        <td><span class="badge transit">In Transit</span></td>
+                        <td>
+                            <button class="btn btn-primary">Update</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>IMUK-23422</td>
+                        <td>Isla Brown</td>
+                        <td>Cardiff</td>
+                        <td><span class="badge delivered">Delivered</span></td>
+                        <td>
+                            <button class="btn btn-outline">Details</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="reviewModal">
+    <div class="modal-content">
+        <h2>Review Quote</h2>
+
+        <label>Set Price (£)</label>
+        <input type="number" class="form-control" placeholder="Enter amount in GBP">
+
+        <label>Internal Notes</label>
+        <textarea class="form-control" placeholder="Add internal notes..."></textarea>
+
+        <button class="btn btn-primary">Approve & Send</button>
+        <button class="btn btn-outline">Reject</button>
+    </div>
+</div>
+
+</body>
+</html>

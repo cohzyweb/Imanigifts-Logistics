@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Customers | Imani Logistics UK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="admin-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>Imani Logistics UK</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="quote.html"><i class="fas fa-file-invoice"></i> Quote Requests</a>
+            </li>
+            <li>
+                <a href="shipments.html"><i class="fas fa-truck"></i> Shipments</a>
+            </li>
+            <li class="active">
+                <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
+            </li>
+            <li>
+                <a href="customer-service.html"><i class="fas fa-headset"></i> Customer Service</a>
+            </li>
+            <li>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+            <li>
+                <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- ================= TOPBAR ================= -->
+        <div class="topbar">
+            <h1>Customer Management</h1>
+            <div class="admin-profile">
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </div>
+
+        <!-- ================= CUSTOMER STATS ================= -->
+        <section class="stats">
+            <div class="card">
+                <h3>Total Customers</h3>
+                <p>76</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Customers</h3>
+                <p>64</p>
+            </div>
+
+            <div class="card">
+                <h3>Inactive Customers</h3>
+                <p>8</p>
+            </div>
+
+            <div class="card">
+                <h3>VIP Customers</h3>
+                <p>4</p>
+            </div>
+        </section>
+
+        <!-- ================= CUSTOMER TABLE ================= -->
+        <section class="table-section">
+            <div class="section-header">
+                <h2>All Customers</h2>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="Search customers...">
+                    <button class="btn btn-primary">Search</button>
+                    <button class="btn btn-primary" onclick="document.getElementById('addCustomerModal').style.display='flex'">
+                        <i class="fas fa-plus"></i> Add Customer
+                    </button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Shipments</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Oliver Smith</td>
+                        <td>oliver.smith@email.co.uk</td>
+                        <td>+44 7700 900123</td>
+                        <td>14</td>
+                        <td><span class="badge delivered">Active</span></td>
+                        <td>
+                            <button class="btn btn-outline">View</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Amelia Johnson</td>
+                        <td>amelia.j@email.co.uk</td>
+                        <td>+44 7700 900456</td>
+                        <td>7</td>
+                        <td><span class="badge pending">Inactive</span></td>
+                        <td>
+                            <button class="btn btn-outline">View</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Harry Thompson</td>
+                        <td>harry.t@email.co.uk</td>
+                        <td>+44 7700 900789</td>
+                        <td>22</td>
+                        <td><span class="badge transit">VIP</span></td>
+                        <td>
+                            <button class="btn btn-outline">View</button>
+                            <button class="btn btn-primary">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+<!-- ================= ADD CUSTOMER MODAL ================= -->
+<div class="modal" id="addCustomerModal">
+    <div class="modal-content">
+        <h2>Add New Customer</h2>
+
+        <input type="text" class="form-control" placeholder="Full Name">
+        <input type="email" class="form-control" placeholder="Email Address">
+        <input type="text" class="form-control" placeholder="Phone Number">
+
+        <select class="form-control">
+            <option>Select Status</option>
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>VIP</option>
+        </select>
+
+        <button class="btn btn-primary">Save Customer</button>
+        <button class="btn btn-outline" onclick="document.getElementById('addCustomerModal').style.display='none'">
+            Cancel
+        </button>
+    </div>
+</div>
+
+</body>
+</html>
