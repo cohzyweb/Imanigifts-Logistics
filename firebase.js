@@ -1,9 +1,6 @@
-// firebase-config.js
-// ================= IMPORTS =================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-// ================= FIREBASE CONFIG =================
 const firebaseConfig = {
   apiKey: "AIzaSyCiGw3eONWoqxItZt1dNAuOhHr-lUMbBV8",
   authDomain: "imanigifts-logistics.firebaseapp.com",

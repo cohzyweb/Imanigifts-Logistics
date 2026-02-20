@@ -1,5 +1,5 @@
 // ================= IMPORTS =================
-import { auth } from "./firebase.js"; // <-- your firebase file
+import { auth } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
