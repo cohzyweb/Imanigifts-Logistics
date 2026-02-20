@@ -1,46 +1,45 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } 
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-// Your Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyCiGw3eONWoqxItZt1dNAuOhHr-lUMbBV8",
-  authDomain: "imanigifts-logistics.firebaseapp.com",
-  projectId: "imanigifts-logistics",
-  storageBucket: "imanigifts-logistics.appspot.com",
-  messagingSenderId: "841177758464",
-  appId: "1:841177758464:web:60b5890ec5702d371dd1e5",
-  measurementId: "G-CGQ28X85EL"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { db } from "./firebase.js";
+import { collection, addDoc, serverTimestamp } 
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 const form = document.getElementById("quoteForm");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (form) {
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const service = document.getElementById("service").value;
-  const message = document.getElementById("message").value;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  try {
-    await addDoc(collection(db, "quotes"), {
-      name,
-      email,
-      service,
-      message,
-      status: "pending",
-      createdAt: serverTimestamp()
-    });
+    const extras = [];
+    document.querySelectorAll('input[type="checkbox"]:checked')
+      .forEach(cb => extras.push(cb.value));
 
-    alert("Quote submitted successfully!");
-    form.reset();
+    try {
 
-  } catch (error) {
-    alert("Error submitting quote.");
-    console.error(error);
-  }
-});
+      await addDoc(collection(db, "quotes"), {
+        fullname: document.getElementById("fullname").value,
+        email: document.getElementById("email").value,
+        company: document.getElementById("company").value,
+        phone: document.getElementById("phone").value,
+        shipmentType: document.getElementById("shipment-type").value,
+        service: document.getElementById("service").value,
+        origin: document.getElementById("origin").value,
+        destination: document.getElementById("destination").value,
+        weight: document.getElementById("weight").value,
+        dimensions: document.getElementById("dimensions").value,
+        cargo: document.getElementById("cargo").value,
+        extras: extras,
+        status: "Pending",
+        createdAt: serverTimestamp()
+      });
+
+      alert("✅ Quote submitted successfully!");
+      form.reset();
+
+    } catch (error) {
+      console.error(error);
+      alert("❌ Something went wrong.");
+    }
+
+  });
+
+}

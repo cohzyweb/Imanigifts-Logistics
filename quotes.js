@@ -1,38 +1,84 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, onSnapshot, query, orderBy } 
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { db } from "./firebase.js";
+import { doc, getDoc, updateDoc } 
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-const firebaseConfig = {
- apiKey: "AIzaSyCiGw3eONWoqxItZt1dNAuOhHr-lUMbBV8",
-  authDomain: "imanigifts-logistics.firebaseapp.com",
-  projectId: "imanigifts-logistics",
-  storageBucket: "imanigifts-logistics.appspot.com",
-  messagingSenderId: "841177758464",
-  appId: "1:841177758464:web:60b5890ec5702d371dd1e5",
-  measurementId: "G-CGQ28X85EL"
-};
+/* ================= GET QUOTE ID FROM URL ================= */
+const params = new URLSearchParams(window.location.search);
+const quoteId = params.get("id");
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+if (!quoteId) {
+  alert("No quote selected.");
+}
 
-const quotesTable = document.getElementById("quotesTable");
+/* ================= LOAD QUOTE DATA ================= */
+async function loadQuote() {
 
-const q = query(collection(db, "quotes"), orderBy("createdAt", "desc"));
+  const docRef = doc(db, "quotes", quoteId);
+  const docSnap = await getDoc(docRef);
 
-onSnapshot(q, (snapshot) => {
-  quotesTable.innerHTML = "";
+  if (docSnap.exists()) {
 
-  snapshot.forEach((doc) => {
-    const data = doc.data();
+    const data = docSnap.data();
 
-    quotesTable.innerHTML += `
-      <tr>
-        <td>${data.name}</td>
-        <td>${data.email}</td>
-        <td>${data.service}</td>
-        <td>${data.message}</td>
-        <td>${data.status}</td>
-      </tr>
-    `;
-  });
+    document.querySelector('input[label="Customer Name"]')?.value;
+    
+    document.querySelectorAll("input[readonly]")[0].value = data.fullname;
+    document.querySelectorAll("input[readonly]")[1].value = data.email;
+    document.querySelectorAll("input[readonly]")[2].value = data.phone;
+    document.querySelectorAll("input[readonly]")[3].value =
+      `${data.origin} → ${data.destination}`;
+    document.querySelectorAll("input[readonly]")[4].value = data.shipmentType;
+    document.querySelectorAll("input[readonly]")[5].value =
+      `${data.weight} kg`;
+
+    document.querySelector("textarea[readonly]").value = data.cargo;
+
+  } else {
+    alert("Quote not found.");
+  }
+}
+
+loadQuote();
+
+/* ================= VAT CALCULATION ================= */
+const base = document.getElementById("base_price");
+const vat = document.getElementById("vat_amount");
+const total = document.getElementById("total_amount");
+
+base?.addEventListener("input", function () {
+
+  const value = parseFloat(this.value) || 0;
+  const vatCalc = value * 0.20;
+  const totalCalc = value + vatCalc;
+
+  vat.value = vatCalc.toFixed(2);
+  total.value = totalCalc.toFixed(2);
+
+});
+
+/* ================= SUBMIT QUOTE RESPONSE ================= */
+const form = document.querySelector("form");
+
+form?.addEventListener("submit", async (e) => {
+
+  e.preventDefault();
+
+  try {
+
+    await updateDoc(doc(db, "quotes", quoteId), {
+      basePrice: base.value,
+      vat: vat.value,
+      total: total.value,
+      estimatedTime: form.querySelectorAll("input")[9].value,
+      notes: form.querySelector("textarea").value,
+      status: form.querySelector("select").value
+    });
+
+    alert("✅ Quote response sent!");
+
+  } catch (error) {
+    console.error(error);
+    alert("❌ Failed to update.");
+  }
+
 });
