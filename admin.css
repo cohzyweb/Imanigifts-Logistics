@@ -126,6 +126,80 @@ body {
     text-decoration: underline;
 }
 
+/* ================= PASSWORD FIELD ================= */
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    cursor: pointer;
+    color: var(--text-light);
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--primary);
+}
+
+/* ================= STRENGTH METER ================= */
+
+.strength-meter {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 50px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+#strengthBar {
+    height: 100%;
+    width: 0%;
+    transition: var(--transition);
+    border-radius: 50px;
+}
+
+#strengthText {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Error Box */
+.error-box {
+  background: #ffe5e5;
+  color: #cc0000;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Remember + Forgot */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.remember-me input {
+  margin-right: 6px;
+}
+
 
 /* ================= LAYOUT ================= */
 
