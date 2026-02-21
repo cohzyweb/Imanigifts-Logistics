@@ -57,7 +57,7 @@ onSnapshot(quotesQuery, (snapshot) => {
           </span>
         </td>
         <td>
-          <a href="review-quote.html?id=${doc.id}" 
+          <a href="review-quotes.html?id=${doc.id}" 
              class="btn btn-primary">
              Review
           </a>
