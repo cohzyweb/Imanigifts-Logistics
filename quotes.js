@@ -81,7 +81,7 @@ function renderTable(data) {
       <td>${formattedDate}</td>
 
       <td>
-        <a href="review-quote.html?id=${quote.id}" class="view-btn">
+        <a href="review-quotes.html?id=${quote.id}" class="view-btn">
           View
         </a>
       </td>
