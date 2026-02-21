@@ -1,93 +1,143 @@
 import { db } from "./firebase.js";
-import { doc, onSnapshot, updateDoc }
-from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy,
+  updateDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-/* ================= GET QUOTE ID ================= */
-const params = new URLSearchParams(window.location.search);
-const quoteId = params.get("id");
+/* ================= ELEMENTS ================= */
+const tableBody = document.getElementById("quotesTableBody");
+const searchInput = document.getElementById("searchInput");
 
-if (!quoteId) {
-  alert("No quote selected.");
-  throw new Error("Missing quote ID");
-}
+/* ================= DATA STORAGE ================= */
+let allQuotes = [];
 
-const docRef = doc(db, "quotes", quoteId);
-
-/* ================= GET ELEMENTS ================= */
-const form = document.getElementById("quoteForm");
-
-const customerName = document.getElementById("customerName");
-const customerEmail = document.getElementById("customerEmail");
-const customerPhone = document.getElementById("customerPhone");
-const route = document.getElementById("route");
-const shipmentType = document.getElementById("shipmentType");
-const weight = document.getElementById("weight");
-const cargo = document.getElementById("cargo");
-
-const basePrice = document.getElementById("base_price");
-const vatAmount = document.getElementById("vat_amount");
-const totalAmount = document.getElementById("total_amount");
-const status = document.getElementById("status");
-const estimatedTime = document.getElementById("estimatedTime");
-const notes = document.getElementById("notes");
-
-/* ================= REAL-TIME LISTENER ================= */
-onSnapshot(docRef, (docSnap) => {
-
-  if (!docSnap.exists()) return;
-
-  const data = docSnap.data();
-
-  customerName.value = data.fullname || "";
-  customerEmail.value = data.email || "";
-  customerPhone.value = data.phone || "";
-  route.value = `${data.origin} → ${data.destination}`;
-  shipmentType.value = data.shipmentType || "";
-  weight.value = data.weight || "";
-  cargo.value = data.cargo || "";
-
-  basePrice.value = data.basePrice || "";
-  vatAmount.value = data.vat || "";
-  totalAmount.value = data.total || "";
-  status.value = data.status || "Pending";
-  estimatedTime.value = data.estimatedTime || "";
-  notes.value = data.notes || "";
-
-});
-
-/* ================= VAT AUTO CALCULATION ================= */
-basePrice?.addEventListener("input", () => {
-
-  const value = parseFloat(basePrice.value) || 0;
-  const vatCalc = value * 0.20;
-  const totalCalc = value + vatCalc;
-
-  vatAmount.value = vatCalc.toFixed(2);
-  totalAmount.value = totalCalc.toFixed(2);
-
-});
-
-/* ================= UPDATE QUOTE ================= */
-form?.addEventListener("submit", async (e) => {
-
-  e.preventDefault();
-
+/* ================= FETCH QUOTES ================= */
+async function fetchQuotes() {
   try {
 
-    await updateDoc(docRef, {
-      basePrice: basePrice.value,
-      vat: vatAmount.value,
-      total: totalAmount.value,
-      status: status.value,
-      estimatedTime: estimatedTime.value,
-      notes: notes.value
-    });
+    const q = query(collection(db, "quotes"), orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
 
-    alert("✅ Quote updated successfully!");
+    allQuotes = snapshot.docs.map(docSnap => ({
+      id: docSnap.id,
+      ...docSnap.data()
+    }));
+
+    renderTable(allQuotes);
 
   } catch (error) {
-    console.error(error);
-    alert("❌ Failed to update.");
+    console.error("Error fetching quotes:", error);
+  }
+}
+
+/* ================= RENDER TABLE ================= */
+function renderTable(data) {
+
+  tableBody.innerHTML = "";
+
+  if (data.length === 0) {
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align:center;">
+          No quote requests found.
+        </td>
+      </tr>
+    `;
+    return;
   }
 
+  data.forEach(quote => {
+
+    const tr = document.createElement("tr");
+
+    const formattedDate = quote.createdAt?.toDate
+      ? quote.createdAt.toDate().toLocaleDateString("en-GB")
+      : "—";
+
+    tr.innerHTML = `
+      <td>
+        <strong>${quote.fullName || "—"}</strong><br>
+        <small>${quote.email || ""}</small>
+      </td>
+
+      <td>
+        ${quote.pickupLocation || "—"} → ${quote.deliveryLocation || "—"}
+      </td>
+
+      <td>${quote.shipmentType || "—"}</td>
+
+      <td>
+        <select class="status-select" data-id="${quote.id}">
+          <option value="pending" ${quote.status === "pending" ? "selected" : ""}>Pending</option>
+          <option value="quoted" ${quote.status === "quoted" ? "selected" : ""}>Quoted</option>
+          <option value="completed" ${quote.status === "completed" ? "selected" : ""}>Completed</option>
+        </select>
+      </td>
+
+      <td>${formattedDate}</td>
+
+      <td>
+        <a href="quote-details.html?id=${quote.id}" class="view-btn">
+          View
+        </a>
+      </td>
+    `;
+
+    tableBody.appendChild(tr);
+  });
+
+  attachStatusListeners();
+}
+
+/* ================= STATUS UPDATE ================= */
+function attachStatusListeners() {
+
+  document.querySelectorAll(".status-select").forEach(select => {
+
+    select.addEventListener("change", async (e) => {
+
+      const id = e.target.dataset.id;
+      const newStatus = e.target.value;
+
+      try {
+
+        await updateDoc(doc(db, "quotes", id), {
+          status: newStatus
+        });
+
+      } catch (error) {
+        console.error("Status update failed:", error);
+      }
+
+    });
+
+  });
+
+}
+
+/* ================= SEARCH FUNCTION ================= */
+searchInput.addEventListener("input", () => {
+
+  const value = searchInput.value.toLowerCase();
+
+  const filtered = allQuotes.filter(q => {
+
+    return (
+      q.fullName?.toLowerCase().includes(value) ||
+      q.email?.toLowerCase().includes(value) ||
+      q.pickupLocation?.toLowerCase().includes(value) ||
+      q.deliveryLocation?.toLowerCase().includes(value)
+    );
+
+  });
+
+  renderTable(filtered);
+
 });
+
+/* ================= INITIAL LOAD ================= */
+fetchQuotes();
