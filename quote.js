@@ -20,26 +20,34 @@ if (form) {
 
     // Collect checked extras
     const extras = [];
-    document.querySelectorAll('input[type="checkbox"]:checked')
+    document.querySelectorAll('.checkbox-group input[type="checkbox"]:checked')
       .forEach(cb => extras.push(cb.value));
 
     try {
 
       await addDoc(collection(db, "quotes"), {
-        fullname: document.getElementById("fullname").value,
+
+        // 🔥 Aligned with Admin Dashboard
+        fullName: document.getElementById("fullname").value,
         email: document.getElementById("email").value,
         company: document.getElementById("company").value,
         phone: document.getElementById("phone").value,
+
         shipmentType: document.getElementById("shipment-type").value,
         service: document.getElementById("service").value,
-        origin: document.getElementById("origin").value,
-        destination: document.getElementById("destination").value,
+
+        pickupLocation: document.getElementById("origin").value,
+        deliveryLocation: document.getElementById("destination").value,
+
         weight: document.getElementById("weight").value,
         dimensions: document.getElementById("dimensions").value,
         cargo: document.getElementById("cargo").value,
-        extras: extras,
-        status: "Pending",
+
+        additionalServices: extras,
+
+        status: "pending", // lowercase for consistency
         createdAt: serverTimestamp()
+
       });
 
       // Success Message
