@@ -22,16 +22,15 @@
         </div>
 
         <ul class="sidebar-menu">
-            <li class="active">
+            <li>
                 <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
             </li>
-            <li>
-                <a href="quotes.html"><i class="fas fa-file-invoice"></i> Quote Requests</a>
+            <li class="active">
+                <a href="all-quotes.html"><i class="fas fa-file-invoice"></i> Quote Requests</a>
             </li>
             <li>
                 <a href="shipments.html"><i class="fas fa-truck"></i> Shipments</a>
             </li>
-            <li>
             <li>
                 <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
             </li>
@@ -42,18 +41,16 @@
                 <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
             </li>
             <li>
-    <a href="#" id="logoutBtn">
-        <i class="fas fa-sign-out-alt"></i> Log Out
-    </a>
-</li>
-
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </li>
         </ul>
     </aside>
 
     <!-- ================= MAIN CONTENT ================= -->
     <main class="main-content">
 
-        <!-- Topbar -->
         <div class="topbar">
             <h1>Review Quote Request</h1>
             <div class="admin-profile">
@@ -71,37 +68,37 @@
 
                 <div class="form-group">
                     <label>Customer Name</label>
-                    <input type="text" value="Oliver Smith" readonly>
+                    <input type="text" id="customerName" readonly>
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="text" value="oliver.smith@email.co.uk" readonly>
+                    <input type="text" id="customerEmail" readonly>
                 </div>
 
                 <div class="form-group">
                     <label>Telephone</label>
-                    <input type="text" value="+44 7123 456789" readonly>
+                    <input type="text" id="customerPhone" readonly>
                 </div>
 
                 <div class="form-group">
                     <label>Route</label>
-                    <input type="text" value="Manchester → London" readonly>
+                    <input type="text" id="route" readonly>
                 </div>
 
                 <div class="form-group">
                     <label>Shipment Type</label>
-                    <input type="text" value="Road Freight" readonly>
+                    <input type="text" id="shipmentType" readonly>
                 </div>
 
                 <div class="form-group">
                     <label>Weight</label>
-                    <input type="text" value="120 kg" readonly>
+                    <input type="text" id="weight" readonly>
                 </div>
 
                 <div class="form-group full-width">
                     <label>Description</label>
-                    <textarea readonly>Commercial goods, boxed pallets.</textarea>
+                    <textarea id="cargo" readonly></textarea>
                 </div>
 
             </div>
@@ -113,7 +110,7 @@
                 <h2>Set Pricing & Respond</h2>
             </div>
 
-            <form class="form-grid">
+            <form id="quoteForm" class="form-grid">
 
                 <div class="form-group">
                     <label>Base Price (£)</label>
@@ -132,19 +129,21 @@
 
                 <div class="form-group">
                     <label>Estimated Delivery Time</label>
-                    <input type="text" placeholder="e.g. 3–5 working days">
+                    <input type="text" id="estimatedTime" placeholder="e.g. 3–5 working days">
                 </div>
 
                 <div class="form-group full-width">
                     <label>Notes to Customer</label>
-                    <textarea placeholder="Additional information for the client..."></textarea>
+                    <textarea id="notes" placeholder="Additional information for the client..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label>Status</label>
-                    <select>
-                        <option>Quoted</option>
-                        <option>Rejected</option>
+                    <select id="status">
+                        <option value="Pending">Pending</option>
+                        <option value="Quoted">Quoted</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Approved">Approved</option>
                     </select>
                 </div>
 
@@ -160,21 +159,7 @@
     </main>
 </div>
 
-<script>
-/* VAT Auto Calculation */
-const base = document.getElementById("base_price");
-const vat = document.getElementById("vat_amount");
-const total = document.getElementById("total_amount");
-
-base.addEventListener("input", function () {
-    const value = parseFloat(this.value) || 0;
-    const vatCalc = value * 0.20;
-    const totalCalc = value + vatCalc;
-
-    vat.value = vatCalc.toFixed(2);
-    total.value = totalCalc.toFixed(2);
-});
-</script>
+<!-- 🔥 Firebase Real-Time Script -->
 <script type="module" src="quotes.js"></script>
 
 </body>

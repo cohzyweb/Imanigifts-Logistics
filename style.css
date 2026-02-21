@@ -558,6 +558,31 @@ input:focus-visible {
     gap: 8px;
 }
 
+/* ================= FORM MESSAGE (SUCCESS / ERROR) ================= */
+
+.form-message {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  display: none;
+}
+
+.form-message.success {
+  display: block;
+  background: #e6f7ee;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.form-message.error {
+  display: block;
+  background: #fdecea;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+
 /* ================= WHY CHOOSE US ================= */
 .why-choose-us {
     background: #fff;

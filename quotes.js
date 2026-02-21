@@ -1,80 +1,89 @@
 import { db } from "./firebase.js";
-import { doc, getDoc, updateDoc } 
+import { doc, onSnapshot, updateDoc }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-/* ================= GET QUOTE ID FROM URL ================= */
+/* ================= GET QUOTE ID ================= */
 const params = new URLSearchParams(window.location.search);
 const quoteId = params.get("id");
 
 if (!quoteId) {
   alert("No quote selected.");
+  throw new Error("Missing quote ID");
 }
 
-/* ================= LOAD QUOTE DATA ================= */
-async function loadQuote() {
+const docRef = doc(db, "quotes", quoteId);
 
-  const docRef = doc(db, "quotes", quoteId);
-  const docSnap = await getDoc(docRef);
+/* ================= GET ELEMENTS ================= */
+const form = document.getElementById("quoteForm");
 
-  if (docSnap.exists()) {
+const customerName = document.getElementById("customerName");
+const customerEmail = document.getElementById("customerEmail");
+const customerPhone = document.getElementById("customerPhone");
+const route = document.getElementById("route");
+const shipmentType = document.getElementById("shipmentType");
+const weight = document.getElementById("weight");
+const cargo = document.getElementById("cargo");
 
-    const data = docSnap.data();
+const basePrice = document.getElementById("base_price");
+const vatAmount = document.getElementById("vat_amount");
+const totalAmount = document.getElementById("total_amount");
+const status = document.getElementById("status");
+const estimatedTime = document.getElementById("estimatedTime");
+const notes = document.getElementById("notes");
 
-    document.querySelector('input[label="Customer Name"]')?.value;
-    
-    document.querySelectorAll("input[readonly]")[0].value = data.fullname;
-    document.querySelectorAll("input[readonly]")[1].value = data.email;
-    document.querySelectorAll("input[readonly]")[2].value = data.phone;
-    document.querySelectorAll("input[readonly]")[3].value =
-      `${data.origin} → ${data.destination}`;
-    document.querySelectorAll("input[readonly]")[4].value = data.shipmentType;
-    document.querySelectorAll("input[readonly]")[5].value =
-      `${data.weight} kg`;
+/* ================= REAL-TIME LISTENER ================= */
+onSnapshot(docRef, (docSnap) => {
 
-    document.querySelector("textarea[readonly]").value = data.cargo;
+  if (!docSnap.exists()) return;
 
-  } else {
-    alert("Quote not found.");
-  }
-}
+  const data = docSnap.data();
 
-loadQuote();
+  customerName.value = data.fullname || "";
+  customerEmail.value = data.email || "";
+  customerPhone.value = data.phone || "";
+  route.value = `${data.origin} → ${data.destination}`;
+  shipmentType.value = data.shipmentType || "";
+  weight.value = data.weight || "";
+  cargo.value = data.cargo || "";
 
-/* ================= VAT CALCULATION ================= */
-const base = document.getElementById("base_price");
-const vat = document.getElementById("vat_amount");
-const total = document.getElementById("total_amount");
-
-base?.addEventListener("input", function () {
-
-  const value = parseFloat(this.value) || 0;
-  const vatCalc = value * 0.20;
-  const totalCalc = value + vatCalc;
-
-  vat.value = vatCalc.toFixed(2);
-  total.value = totalCalc.toFixed(2);
+  basePrice.value = data.basePrice || "";
+  vatAmount.value = data.vat || "";
+  totalAmount.value = data.total || "";
+  status.value = data.status || "Pending";
+  estimatedTime.value = data.estimatedTime || "";
+  notes.value = data.notes || "";
 
 });
 
-/* ================= SUBMIT QUOTE RESPONSE ================= */
-const form = document.querySelector("form");
+/* ================= VAT AUTO CALCULATION ================= */
+basePrice?.addEventListener("input", () => {
 
+  const value = parseFloat(basePrice.value) || 0;
+  const vatCalc = value * 0.20;
+  const totalCalc = value + vatCalc;
+
+  vatAmount.value = vatCalc.toFixed(2);
+  totalAmount.value = totalCalc.toFixed(2);
+
+});
+
+/* ================= UPDATE QUOTE ================= */
 form?.addEventListener("submit", async (e) => {
 
   e.preventDefault();
 
   try {
 
-    await updateDoc(doc(db, "quotes", quoteId), {
-      basePrice: base.value,
-      vat: vat.value,
-      total: total.value,
-      estimatedTime: form.querySelectorAll("input")[9].value,
-      notes: form.querySelector("textarea").value,
-      status: form.querySelector("select").value
+    await updateDoc(docRef, {
+      basePrice: basePrice.value,
+      vat: vatAmount.value,
+      total: totalAmount.value,
+      status: status.value,
+      estimatedTime: estimatedTime.value,
+      notes: notes.value
     });
 
-    alert("✅ Quote response sent!");
+    alert("✅ Quote updated successfully!");
 
   } catch (error) {
     console.error(error);

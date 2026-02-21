@@ -1,14 +1,24 @@
+// ================= IMPORTS =================
 import { db } from "./firebase.js";
 import { collection, addDoc, serverTimestamp } 
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
+// ================= FORM ELEMENTS =================
 const form = document.getElementById("quoteForm");
+const messageBox = document.getElementById("formMessage");
+const submitBtn = document.getElementById("submitBtn");
 
+// ================= SUBMIT HANDLER =================
 if (form) {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Disable button & show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Submitting...";
+
+    // Collect checked extras
     const extras = [];
     document.querySelectorAll('input[type="checkbox"]:checked')
       .forEach(cb => extras.push(cb.value));
@@ -32,14 +42,27 @@ if (form) {
         createdAt: serverTimestamp()
       });
 
-      alert("✅ Quote submitted successfully!");
+      // Success Message
+      messageBox.innerHTML = 
+        "✅ Quote submitted successfully! We’ll respond within 2 hours.";
+      messageBox.className = "form-message success";
+
       form.reset();
 
     } catch (error) {
+
       console.error(error);
-      alert("❌ Something went wrong.");
+
+      messageBox.innerHTML = 
+        "❌ Something went wrong. Please try again.";
+      messageBox.className = "form-message error";
+
     }
 
+    // Restore button
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 
+      `<i class="fa-solid fa-calculator"></i> Get My Quote`;
   });
 
 }

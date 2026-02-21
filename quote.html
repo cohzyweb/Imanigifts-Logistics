@@ -9,18 +9,13 @@
     <meta name="keywords" content="logistics quote, freight rate, shipping cost, cargo pricing, supply chain quote">
     <meta name="author" content="Imani Gift Logistics">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Get a Quote | Imani Gift Logistics">
     <meta property="og:description" content="Reliable logistics and supply chain solutions worldwide. Request your quote now.">
     <meta property="og:image" content="Imani_Logistics_1.png">
 
-    <!-- Favicon -->
     <link rel="icon" href="Imani_Logistics_1.png" type="image/png">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- ===== EXTERNAL CSS ===== -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -59,189 +54,110 @@
         <p class="section-subtitle">Fill out the form below. Our team will respond within 2 hours.</p>
 
         <div class="quote-form-card">
-            <form action="#" method="POST">
+            <form id="quoteForm">
+
                 <div class="form-grid">
-                    <!-- Full name -->
+
                     <div class="form-group">
                         <label for="fullname">Full Name *</label>
-                        <input type="text" id="fullname" name="fullname" placeholder="John Doe" required>
+                        <input type="text" id="fullname" required>
                     </div>
-                    <!-- Email -->
+
                     <div class="form-group">
                         <label for="email">Business Email *</label>
-                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                        <input type="email" id="email" required>
                     </div>
-                    <!-- Company -->
+
                     <div class="form-group">
                         <label for="company">Company Name</label>
-                        <input type="text" id="company" name="company" placeholder="Your business">
+                        <input type="text" id="company">
                     </div>
-                    <!-- Phone -->
+
                     <div class="form-group">
                         <label for="phone">Phone *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required>
+                        <input type="tel" id="phone" required>
                     </div>
-                    <!-- Shipment type -->
+
                     <div class="form-group">
-                        <label for="shipment-type">Shipment type *</label>
-                        <select id="shipment-type" name="shipment_type" required>
+                        <label for="shipment-type">Shipment Type *</label>
+                        <select id="shipment-type" required>
                             <option value="" disabled selected>– Select –</option>
-                            <option value="air">Air freight</option>
-                            <option value="ocean">Ocean freight</option>
-                            <option value="land">Land / Trucking</option>
-                            <option value="rail">Rail</option>
-                            <option value="express">Express courier</option>
+                            <option value="Air Freight">Air Freight</option>
+                            <option value="Ocean Freight">Ocean Freight</option>
+                            <option value="Land / Trucking">Land / Trucking</option>
+                            <option value="Rail">Rail</option>
+                            <option value="Express Courier">Express Courier</option>
                         </select>
                     </div>
-                    <!-- Service needed -->
+
                     <div class="form-group">
-                        <label for="service">Service needed *</label>
-                        <select id="service" name="service" required>
+                        <label for="service">Service Needed *</label>
+                        <select id="service" required>
                             <option value="" disabled selected>– Select –</option>
-                            <option value="forwarding">Freight forwarding</option>
-                            <option value="warehousing">Warehousing</option>
-                            <option value="distribution">Distribution</option>
-                            <option value="customs">Customs clearance</option>
-                            <option value="fulfillment">E‑commerce fulfillment</option>
-                            <option value="lastmile">Last mile delivery</option>
+                            <option value="Freight Forwarding">Freight Forwarding</option>
+                            <option value="Warehousing">Warehousing</option>
+                            <option value="Distribution">Distribution</option>
+                            <option value="Customs Clearance">Customs Clearance</option>
+                            <option value="E-commerce Fulfillment">E-commerce Fulfillment</option>
+                            <option value="Last Mile Delivery">Last Mile Delivery</option>
                         </select>
                     </div>
-                    <!-- Origin -->
+
                     <div class="form-group">
-                        <label for="origin">Origin (city/country) *</label>
-                        <input type="text" id="origin" name="origin" placeholder="e.g., London, UK" required>
+                        <label for="origin">Origin *</label>
+                        <input type="text" id="origin" required>
                     </div>
-                    <!-- Destination -->
+
                     <div class="form-group">
                         <label for="destination">Destination *</label>
-                        <input type="text" id="destination" name="destination" placeholder="e.g., Manchester, UK" required>
+                        <input type="text" id="destination" required>
                     </div>
-                    <!-- Weight -->
+
                     <div class="form-group">
-                        <label for="weight">Total weight (kg) *</label>
-                        <input type="number" id="weight" name="weight" placeholder="e.g., 500" step="0.1" required>
+                        <label for="weight">Total Weight (kg) *</label>
+                        <input type="number" id="weight" step="0.1" required>
                     </div>
-                    <!-- Dimensions -->
+
                     <div class="form-group">
                         <label for="dimensions">Dimensions (LxWxH cm)</label>
-                        <input type="text" id="dimensions" name="dimensions" placeholder="120x80x100">
+                        <input type="text" id="dimensions">
                     </div>
-                    <!-- Cargo description (full width) -->
+
                     <div class="form-group form-full">
-                        <label for="cargo">Cargo description *</label>
-                        <textarea id="cargo" name="cargo" rows="4" placeholder="e.g., electronics, pallets, fragile items, temperature sensitive..." required></textarea>
+                        <label for="cargo">Cargo Description *</label>
+                        <textarea id="cargo" rows="4" required></textarea>
                     </div>
-                    <!-- Additional services (full width) -->
+
                     <div class="form-group form-full">
-                        <label>Additional services (optional)</label>
+                        <label>Additional Services</label>
                         <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" name="extra_insurance" value="insurance"> Insurance
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_packaging" value="packaging"> Special packaging
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_tracking" value="tracking"> Premium tracking
-                            </label>
-                            <label>
-                                <input type="checkbox" name="extra_documentation" value="docs"> Customs documentation
-                            </label>
+                            <label><input type="checkbox" value="Insurance"> Insurance</label>
+                            <label><input type="checkbox" value="Packaging"> Special Packaging</label>
+                            <label><input type="checkbox" value="Premium Tracking"> Premium Tracking</label>
+                            <label><input type="checkbox" value="Documentation"> Customs Documentation</label>
                         </div>
                     </div>
+
                 </div>
 
-                <!-- submit area -->
+                <!-- Submit Section -->
                 <div class="submit-area">
-                    <button type="submit" class="btn btn-primary btn-large">
+                    <button type="submit" id="submitBtn" class="btn btn-primary btn-large">
                         <i class="fa-solid fa-calculator"></i> Get My Quote
                     </button>
                     <span class="privacy-note">
                         <i class="fa-solid fa-lock"></i> No obligation, 100% free
                     </span>
                 </div>
+
                 <p class="secure-note">
                     <i class="fa-solid fa-shield"></i> Your information is secure. We respect your privacy.
                 </p>
+
+                <!-- 🔥 SUCCESS / ERROR MESSAGE -->
+                <div id="formMessage" class="form-message"></div>
+
             </form>
-        </div>
-    </div>
-</section>
-
-<!-- ================= WHY CHOOSE US ================= -->
-<section class="why-choose-us">
-    <div class="container">
-        <span class="section-label">Why Choose Us</span>
-        <h2>Why Businesses Get Their Quotes From Imani Gift Logistics</h2>
-        <ul>
-            <li><i class="fa-solid fa-check"></i> Transparent, All‑Inclusive Pricing</li>
-            <li><i class="fa-solid fa-check"></i> Real‑Time Rates & Space Availability</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated Logistics Consultant</li>
-            <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
-            <li><i class="fa-solid fa-check"></i> Certified & Experienced Team</li>
-            <li><i class="fa-solid fa-check"></i> Customs Expertise Included</li>
-        </ul>
-    </div>
-</section>
-
-<!-- ================= INDUSTRIES ================= -->
-<section class="industries">
-    <div class="container">
-        <h2 class="section-title">Industries We Quote For</h2>
-        <div class="services-container">
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h3>Retail & E-commerce</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
-                <h3>Healthcare & Pharma</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-industry"></i></div>
-                <h3>Manufacturing</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-utensils"></i></div>
-                <h3>Food & Beverage</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-oil-can"></i></div>
-                <h3>Oil & Gas</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon"><i class="fas fa-microchip"></i></div>
-                <h3>Tech & Electronics</h3>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= TESTIMONIALS ================= -->
-<section class="testimonials">
-    <div class="container">
-        <h2 class="section-title">What Clients Say About Our Quote Process</h2>
-        <div class="testimonial-container">
-            <div class="testimonial-card">
-                <p>"Got a competitive quote within 45 minutes. Smooth and detailed."</p>
-                <h4>– Maria L., Procurement Lead</h4>
-            </div>
-            <div class="testimonial-card">
-                <p>"The form is clear, and the follow‑up was excellent. Highly recommend."</p>
-                <h4>– David K., Operations Manager</h4>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="cta">
-    <div class="container">
-        <h2>Ready to Ship?</h2>
-        <p>Get a customized quote or speak directly with a logistics specialist.</p>
-        <div class="cta-buttons">
-            <a href="#quote-form" class="btn btn-primary btn-light">Request a Quote</a>
-            <a href="contact.html" class="btn btn-outline">Contact Us</a>
         </div>
     </div>
 </section>
@@ -249,49 +165,22 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
     <div class="container">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo" loading="lazy">
-                <p>Smart, safe, and efficient logistics solutions.</p>
-                <div class="social-icons">
-                    <a href="https://www.tiktok.com/@imanigiftslogisti?_r=1&_t=ZN-93s4yZrfjyo" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.facebook.com/share/181meQYqVm/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/imanigiftslogistics?igsh=MWppN2V5ZWk0bm13Zg%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                    <a href="logistics@imanigifts.co.uk"><i class="fa-solid fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">News</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
+        <p>© 2026 Imani Gift Logistics. All rights reserved.</p>
     </div>
 </footer>
 
-<!-- Mobile menu toggle script -->
+<!-- Mobile menu -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
-        if (toggle && nav) {
-            toggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                this.setAttribute('aria-expanded', nav.classList.contains('active'));
-            });
-        }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+    }
+});
 </script>
 
 <script type="module" src="quote.js"></script>
