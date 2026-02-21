@@ -201,6 +201,17 @@ body {
 }
 
 
+.badge {
+    background: #e63946;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin-left: auto;
+    display: none;
+}
+
+
 /* ================= LAYOUT ================= */
 
 .admin-container {

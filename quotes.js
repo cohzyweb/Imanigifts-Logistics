@@ -1,9 +1,9 @@
 import { db } from "./firebase.js";
 import {
   collection,
-  getDocs,
   query,
   orderBy,
+  onSnapshot,
   updateDoc,
   doc
 } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
@@ -11,27 +11,41 @@ import {
 /* ================= ELEMENTS ================= */
 const tableBody = document.getElementById("quotesTableBody");
 const searchInput = document.getElementById("searchInput");
+const badge = document.getElementById("pendingBadge");
 
 /* ================= DATA STORAGE ================= */
 let allQuotes = [];
 
-/* ================= FETCH QUOTES ================= */
-async function fetchQuotes() {
-  try {
+/* ================= REAL-TIME FETCH ================= */
+const q = query(
+  collection(db, "quotes"),
+  orderBy("createdAt", "desc")
+);
 
-    const q = query(collection(db, "quotes"), orderBy("createdAt", "desc"));
-    const snapshot = await getDocs(q);
+onSnapshot(q, (snapshot) => {
 
-    allQuotes = snapshot.docs.map(docSnap => ({
-      id: docSnap.id,
-      ...docSnap.data()
-    }));
+  allQuotes = snapshot.docs.map(docSnap => ({
+    id: docSnap.id,
+    ...docSnap.data()
+  }));
 
-    renderTable(allQuotes);
+  updateBadge();
+  renderTable(allQuotes);
 
-  } catch (error) {
-    console.error("Error fetching quotes:", error);
+});
+
+/* ================= BADGE COUNTER ================= */
+function updateBadge() {
+
+  const pendingCount = allQuotes.filter(q => q.status === "pending").length;
+
+  if (pendingCount > 0) {
+    badge.style.display = "inline-block";
+    badge.textContent = pendingCount;
+  } else {
+    badge.style.display = "none";
   }
+
 }
 
 /* ================= RENDER TABLE ================= */
@@ -124,20 +138,13 @@ searchInput.addEventListener("input", () => {
 
   const value = searchInput.value.toLowerCase();
 
-  const filtered = allQuotes.filter(q => {
-
-    return (
-      q.fullName?.toLowerCase().includes(value) ||
-      q.email?.toLowerCase().includes(value) ||
-      q.pickupLocation?.toLowerCase().includes(value) ||
-      q.deliveryLocation?.toLowerCase().includes(value)
-    );
-
-  });
+  const filtered = allQuotes.filter(q =>
+    q.fullName?.toLowerCase().includes(value) ||
+    q.email?.toLowerCase().includes(value) ||
+    q.pickupLocation?.toLowerCase().includes(value) ||
+    q.deliveryLocation?.toLowerCase().includes(value)
+  );
 
   renderTable(filtered);
 
 });
-
-/* ================= INITIAL LOAD ================= */
-fetchQuotes();

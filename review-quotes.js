@@ -35,13 +35,17 @@ const status = document.getElementById("status");
 const estimatedTime = document.getElementById("estimatedTime");
 const notes = document.getElementById("notes");
 
-/* ================= REAL-TIME LOAD ================= */
+/* ================= REAL-TIME LISTENER ================= */
+let isUpdating = false; // prevents overwrite while typing
+
 onSnapshot(docRef, (docSnap) => {
 
   if (!docSnap.exists()) {
     alert("Quote not found.");
     return;
   }
+
+  if (isUpdating) return; // prevent UI flicker during update
 
   const data = docSnap.data();
 
@@ -56,16 +60,16 @@ onSnapshot(docRef, (docSnap) => {
   weight.value = data.weight || "";
   cargo.value = data.cargo || "";
 
-  basePrice.value = data.basePrice || "";
-  vatAmount.value = data.vat || "";
-  totalAmount.value = data.total || "";
-  status.value = data.status || "Pending";
+  basePrice.value = data.basePrice ?? "";
+  vatAmount.value = data.vat ?? "";
+  totalAmount.value = data.total ?? "";
+  status.value = data.status || "pending";
   estimatedTime.value = data.estimatedTime || "";
   notes.value = data.notes || "";
 
 });
 
-/* ================= VAT CALCULATION ================= */
+/* ================= VAT AUTO CALC ================= */
 basePrice.addEventListener("input", () => {
 
   const value = parseFloat(basePrice.value) || 0;
@@ -84,21 +88,25 @@ form.addEventListener("submit", async (e) => {
 
   try {
 
+    isUpdating = true;
+
     await updateDoc(docRef, {
       basePrice: parseFloat(basePrice.value) || 0,
       vat: parseFloat(vatAmount.value) || 0,
       total: parseFloat(totalAmount.value) || 0,
-      status: status.value,
+      status: status.value.toLowerCase(),
       estimatedTime: estimatedTime.value,
       notes: notes.value,
       updatedAt: serverTimestamp()
     });
 
-    alert("✅ Quote sent successfully!");
+    alert("✅ Quote updated successfully!");
 
   } catch (error) {
     console.error(error);
     alert("❌ Failed to update quote.");
   }
+
+  isUpdating = false;
 
 });
