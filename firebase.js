@@ -1,10 +1,10 @@
-import { initializeApp } 
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
 
-import { getAuth } 
+import { getAuth }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-import { getFirestore } 
+import { getFirestore }
 from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -17,7 +17,9 @@ const firebaseConfig = {
   measurementId: "G-CGQ28X85EL"
 };
 
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
 
+// Initialize services
 export const auth = getAuth(app);
 export const db = getFirestore(app);

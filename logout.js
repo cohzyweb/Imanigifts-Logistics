@@ -1,19 +1,23 @@
-import { getAuth, signOut } from 
-"https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { signOut }
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-const auth = getAuth();
+import { auth } from "./firebase-config.js";
 
-const logoutBtn = document.getElementById("logoutBtn");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (logoutBtn) {
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (!logoutBtn) return;
+
   logoutBtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
     try {
       await signOut(auth);
-      window.location.href = "login.html";
+      window.location.replace("login.html");
     } catch (error) {
+      console.error("Logout error:", error);
       alert("Error logging out: " + error.message);
     }
   });
-}
+
+});
