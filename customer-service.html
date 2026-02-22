@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Your CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -26,11 +27,20 @@
             <li><a href="quotes.html"><i class="fas fa-file-invoice"></i> Quote Requests</a></li>
             <li><a href="shipments.html"><i class="fas fa-truck"></i> Shipments</a></li>
             <li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
+
             <li class="active">
-                <a href="customer-service.html"><i class="fas fa-headset"></i> Customer Service</a>
+                <a href="customer-service.html">
+                    <i class="fas fa-headset"></i> Customer Service
+                </a>
             </li>
+
             <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+
+            <li>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </li>
         </ul>
     </aside>
 
@@ -39,43 +49,47 @@
 
         <!-- ================= TOPBAR ================= -->
         <div class="topbar">
-            <h1>Customer Service Desk (AI Assisted)</h1>
+            <h1>Customer Service Desk</h1>
             <div class="admin-profile">
                 <i class="fas fa-user-circle"></i>
             </div>
         </div>
 
-        <!-- ================= SUPPORT STATS ================= -->
+        <!-- ================= SUPPORT STATS (LIVE) ================= -->
         <section class="stats">
+
             <div class="card">
                 <h3>Total Tickets</h3>
-                <p>42</p>
+                <p id="totalTickets">0</p>
             </div>
 
             <div class="card">
                 <h3>Open Tickets</h3>
-                <p>11</p>
+                <p id="openTickets">0</p>
             </div>
 
             <div class="card">
                 <h3>Resolved</h3>
-                <p>28</p>
+                <p id="resolvedTickets">0</p>
             </div>
 
             <div class="card">
                 <h3>AI Escalations</h3>
-                <p>4</p>
+                <p id="aiEscalations">0</p>
             </div>
+
         </section>
 
         <!-- ================= SUPPORT TABLE ================= -->
         <section class="table-section">
+
             <div class="section-header">
                 <h2>Customer Support Tickets</h2>
 
                 <div class="search-bar">
-                    <input type="text" placeholder="Search tickets...">
-                    <button class="btn btn-primary">Search</button>
+                    <input type="text" 
+                           id="searchTickets" 
+                           placeholder="Search tickets...">
                 </div>
             </div>
 
@@ -92,35 +106,12 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>CS-1023</td>
-                        <td>Oliver Smith</td>
-                        <td>Shipment delay enquiry</td>
-                        <td><span class="badge delayed">Angry</span></td>
-                        <td><span class="badge delayed">High</span></td>
-                        <td><span class="badge pending">Open</span></td>
-                        <td>
-                            <button class="btn btn-primary"
-                                onclick="document.getElementById('ticketModal').style.display='flex'">
-                                View
-                            </button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>CS-1019</td>
-                        <td>Amelia Johnson</td>
-                        <td>Invoice clarification</td>
-                        <td><span class="badge transit">Neutral</span></td>
-                        <td><span class="badge transit">Medium</span></td>
-                        <td><span class="badge delivered">Resolved</span></td>
-                        <td>
-                            <button class="btn btn-outline">Details</button>
-                        </td>
-                    </tr>
+                <tbody id="ticketsTableBody">
+                    <!-- Real-time tickets load here -->
                 </tbody>
+
             </table>
+
         </section>
 
     </main>
@@ -129,53 +120,40 @@
 <!-- ================= VIEW TICKET MODAL ================= -->
 <div class="modal" id="ticketModal">
     <div class="modal-content">
-        <h2>Support Ticket (AI Assisted)</h2>
 
-        <input type="text" class="form-control" value="Oliver Smith" readonly>
-        <input type="text" class="form-control" value="Shipment delay enquiry" readonly>
+        <h2>Support Ticket</h2>
 
-        <textarea class="form-control" id="customerMessage" readonly>
-Customer reports that shipment IMUK-23455 has not arrived as expected. Requesting update and confirmation.
+        <input type="text" id="modalCustomer" class="form-control" readonly>
+        <input type="text" id="modalSubject" class="form-control" readonly>
+
+        <textarea id="modalMessage" 
+                  class="form-control" 
+                  readonly></textarea>
+
+        <textarea id="replyBox" 
+                  class="form-control" 
+                  placeholder="Write response or generate AI reply...">
         </textarea>
 
-        <!-- AI Suggested Reply -->
-        <textarea class="form-control" id="replyBox" placeholder="Write response or generate AI reply..."></textarea>
-
-        <button class="btn btn-outline" onclick="generateAIReply()">
+        <button class="btn btn-outline" id="generateReplyBtn">
             <i class="fas fa-robot"></i> Generate AI Reply
         </button>
 
-        <button class="btn btn-primary">Send Response</button>
+        <button class="btn btn-primary" id="sendReplyBtn">
+            Send Response
+        </button>
 
-        <button class="btn btn-outline"
-            onclick="document.getElementById('ticketModal').style.display='none'">
+        <button class="btn btn-outline" id="closeTicketModal">
             Close
         </button>
+
     </div>
 </div>
 
-<!-- ================= AI SCRIPT (Demo Logic) ================= -->
-<script>
-function generateAIReply() {
-
-    const message = document.getElementById("customerMessage").value;
-
-    // Demo AI logic (replace with real API later)
-    let reply = "";
-
-    if (message.toLowerCase().includes("delay")) {
-        reply = "Dear Customer,\n\nWe sincerely apologise for the delay in your shipment. Our team is currently investigating the issue and we expect delivery within 24–48 hours. We appreciate your patience.\n\nKind regards,\nImani Logistics UK";
-    } else {
-        reply = "Dear Customer,\n\nThank you for contacting Imani Logistics UK. We have received your enquiry and our team is reviewing it. We will respond shortly.\n\nKind regards,\nCustomer Service Team";
-    }
-
-    document.getElementById("replyBox").value = reply;
-}
-</script>
+<!-- ================= SCRIPTS ================= -->
 <script type="module" src="protect.js"></script>
-<script type="module" src="quote.js"></script>
+<script type="module" src="customer-service.js"></script>
 <script type="module" src="logout.js"></script>
-
 
 </body>
 </html>

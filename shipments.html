@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <!-- Your CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -22,30 +23,17 @@
         </div>
 
         <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="quotes.html"><i class="fas fa-file-invoice"></i> Quote Requests</a></li>
+            <li class="active"><a href="shipments.html"><i class="fas fa-truck"></i> Shipments</a></li>
+            <li><a href="customers.html"><i class="fas fa-users"></i> Customers</a></li>
+            <li><a href="customer-service.html"><i class="fas fa-headset"></i> Customer Service</a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             <li>
-                <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
             </li>
-            <li>
-                <a href="quotes.html"><i class="fas fa-file-invoice"></i> Quote Requests</a>
-            </li>
-            <li class="active">
-                <a href="shipments.html"><i class="fas fa-truck"></i> Shipments</a>
-            </li>
-            <li>
-                <a href="customers.html"><i class="fas fa-users"></i> Customers</a>
-            </li>
-            <li>
-                <a href="customer-service.html"><i class="fas fa-headset"></i> Customer Service</a>
-            </li>
-            <li>
-                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-            </li>
-            <li>
-    <a href="#" id="logoutBtn">
-        <i class="fas fa-sign-out-alt"></i> Log Out
-    </a>
-</li>
-
         </ul>
     </aside>
 
@@ -64,34 +52,37 @@
         <section class="stats">
             <div class="card">
                 <h3>Total Shipments</h3>
-                <p>128</p>
+                <p id="totalShipments">0</p>
             </div>
 
             <div class="card">
                 <h3>In Transit</h3>
-                <p>34</p>
+                <p id="inTransit">0</p>
             </div>
 
             <div class="card">
                 <h3>Delivered</h3>
-                <p>82</p>
+                <p id="delivered">0</p>
             </div>
 
             <div class="card">
                 <h3>Delayed</h3>
-                <p>12</p>
+                <p id="delayed">0</p>
             </div>
         </section>
 
         <!-- ================= SHIPMENT TABLE ================= -->
         <section class="table-section">
+
             <div class="section-header">
                 <h2>All Shipments</h2>
 
                 <div class="search-bar">
-                    <input type="text" placeholder="Search tracking ID or customer...">
-                    <button class="btn btn-primary">Search</button>
-                    <button class="btn btn-outline" onclick="openShipmentModal()">
+                    <input type="text" id="searchInput" 
+                        placeholder="Search tracking ID or customer...">
+
+                    <button class="btn btn-outline" 
+                        onclick="openShipmentModal()">
                         <i class="fas fa-plus"></i> Create Shipment
                     </button>
                 </div>
@@ -110,44 +101,12 @@
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>IMUK-34561</td>
-                        <td>Oliver Smith</td>
-                        <td>Manchester → London</td>
-                        <td>Road Freight</td>
-                        <td><span class="badge transit">In Transit</span></td>
-                        <td>18 Feb 2026</td>
-                        <td>
-                            <button class="btn btn-primary" onclick="openUpdateModal()">Update</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>IMUK-34522</td>
-                        <td>Amelia Johnson</td>
-                        <td>Birmingham → Glasgow</td>
-                        <td>Road Freight</td>
-                        <td><span class="badge delivered">Delivered</span></td>
-                        <td>12 Feb 2026</td>
-                        <td>
-                            <button class="btn btn-outline">Details</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>IMUK-34510</td>
-                        <td>Harry Thompson</td>
-                        <td>Leeds → Edinburgh</td>
-                        <td>Air Freight</td>
-                        <td><span class="badge pending">Delayed</span></td>
-                        <td>20 Feb 2026</td>
-                        <td>
-                            <button class="btn btn-primary" onclick="openUpdateModal()">Update</button>
-                        </td>
-                    </tr>
+                <tbody id="shipmentsTableBody">
+                    <!-- Real-time Data Here -->
                 </tbody>
+
             </table>
+
         </section>
 
     </main>
@@ -159,68 +118,44 @@
         <h2>Create Shipment</h2>
 
         <label>Customer Name</label>
-        <input type="text" class="form-control">
+        <input type="text" id="newCustomer" class="form-control">
 
         <label>Route</label>
-        <input type="text" class="form-control" placeholder="e.g. London → Manchester">
+        <input type="text" id="newRoute" class="form-control">
 
         <label>Shipment Type</label>
-        <select class="form-control">
+        <select id="newType" class="form-control">
             <option>Road Freight</option>
             <option>Air Freight</option>
             <option>Sea Freight</option>
         </select>
 
         <label>Estimated Delivery Date</label>
-        <input type="date" class="form-control">
+        <input type="date" id="newDate" class="form-control">
 
-        <button class="btn btn-primary">Create Shipment</button>
-        <button class="btn btn-outline" onclick="closeShipmentModal()">Cancel</button>
+        <button class="btn btn-primary" id="createShipmentBtn">
+            Create Shipment
+        </button>
+
+        <button class="btn btn-outline" onclick="closeShipmentModal()">
+            Cancel
+        </button>
     </div>
 </div>
 
-<!-- ================= UPDATE STATUS MODAL ================= -->
-<div class="modal" id="updateModal">
-    <div class="modal-content">
-        <h2>Update Shipment Status</h2>
-
-        <label>Status</label>
-        <select class="form-control">
-            <option>Pending</option>
-            <option>In Transit</option>
-            <option>Delivered</option>
-            <option>Delayed</option>
-        </select>
-
-        <label>Internal Notes</label>
-        <textarea class="form-control"></textarea>
-
-        <button class="btn btn-primary">Save Update</button>
-        <button class="btn btn-outline" onclick="closeUpdateModal()">Cancel</button>
-    </div>
-</div>
-
+<!-- ================= SCRIPTS ================= -->
 <script>
-    function openShipmentModal() {
-        document.getElementById("shipmentModal").style.display = "flex";
-    }
-
-    function closeShipmentModal() {
-        document.getElementById("shipmentModal").style.display = "none";
-    }
-
-    function openUpdateModal() {
-        document.getElementById("updateModal").style.display = "flex";
-    }
-
-    function closeUpdateModal() {
-        document.getElementById("updateModal").style.display = "none";
-    }
+function openShipmentModal() {
+    document.getElementById("shipmentModal").style.display = "flex";
+}
+function closeShipmentModal() {
+    document.getElementById("shipmentModal").style.display = "none";
+}
 </script>
-<script type="module" src="protect.js"></script>
-<script type="module" src="quote.js"></script>
-<script type="module" src="logout.js"></script>
 
+<script type="module" src="protect.js"></script>
+<script type="module" src="shipments.js"></script>
+<script type="module" src="logout.js"></script>
 
 </body>
 </html>

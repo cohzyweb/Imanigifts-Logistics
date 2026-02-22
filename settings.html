@@ -5,17 +5,14 @@
     <title>Admin Panel - Settings | Imani Logistics UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Your CSS -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
 
 <div class="admin-container">
 
-    <!-- ================= SIDEBAR ================= -->
     <aside class="sidebar">
         <div class="logo">
             <h2>Imani Logistics UK</h2>
@@ -31,18 +28,15 @@
                 <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
             </li>
             <li>
-    <a href="#" id="logoutBtn">
-        <i class="fas fa-sign-out-alt"></i> Log Out
-    </a>
-</li>
-
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
+            </li>
         </ul>
     </aside>
 
-    <!-- ================= MAIN CONTENT ================= -->
     <main class="main-content">
 
-        <!-- ================= TOPBAR ================= -->
         <div class="topbar">
             <h1>System Settings</h1>
             <div class="admin-profile">
@@ -50,7 +44,7 @@
             </div>
         </div>
 
-        <!-- ================= COMPANY SETTINGS ================= -->
+        <!-- COMPANY -->
         <section class="table-section">
             <div class="section-header">
                 <h2><i class="fas fa-building"></i> Company Information</h2>
@@ -58,52 +52,30 @@
 
             <div class="form-group">
                 <label>Company Name</label>
-                <input type="text" value="Imani Logistics UK">
+                <input type="text" id="companyName">
             </div>
 
             <div class="form-group">
                 <label>Support Email</label>
-                <input type="email" value="support@imanilogistics.co.uk">
+                <input type="email" id="supportEmail">
             </div>
 
             <div class="form-group">
                 <label>Contact Number</label>
-                <input type="text" value="+44 7700 900000">
+                <input type="text" id="contactNumber">
             </div>
 
             <div class="form-group">
                 <label>Company Address</label>
-                <textarea>Manchester Business Park, Manchester, UK</textarea>
+                <textarea id="companyAddress"></textarea>
             </div>
 
-            <button class="btn btn-primary">Save Company Settings</button>
+            <button class="btn btn-primary" id="saveCompanyBtn">
+                Save Company Settings
+            </button>
         </section>
 
-        <!-- ================= ADMIN ACCOUNT ================= -->
-        <section class="table-section">
-            <div class="section-header">
-                <h2><i class="fas fa-user-shield"></i> Admin Account</h2>
-            </div>
-
-            <div class="form-group">
-                <label>Admin Name</label>
-                <input type="text" value="System Administrator">
-            </div>
-
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" value="admin@imanilogistics.co.uk">
-            </div>
-
-            <div class="form-group">
-                <label>Change Password</label>
-                <input type="password" placeholder="Enter new password">
-            </div>
-
-            <button class="btn btn-primary">Update Account</button>
-        </section>
-
-        <!-- ================= NOTIFICATIONS ================= -->
+        <!-- NOTIFICATIONS -->
         <section class="table-section">
             <div class="section-header">
                 <h2><i class="fas fa-bell"></i> Notification Preferences</h2>
@@ -111,29 +83,31 @@
 
             <div class="form-group">
                 <label>
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="notifyQuotes">
                     Email alerts for new quote requests
                 </label>
             </div>
 
             <div class="form-group">
                 <label>
-                    <input type="checkbox" checked>
+                    <input type="checkbox" id="notifyTickets">
                     Email alerts for support tickets
                 </label>
             </div>
 
             <div class="form-group">
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" id="notifySMS">
                     SMS alerts for urgent shipment issues
                 </label>
             </div>
 
-            <button class="btn btn-primary">Save Notification Settings</button>
+            <button class="btn btn-primary" id="saveNotificationsBtn">
+                Save Notification Settings
+            </button>
         </section>
 
-        <!-- ================= AI SETTINGS ================= -->
+        <!-- AI -->
         <section class="table-section">
             <div class="section-header">
                 <h2><i class="fas fa-robot"></i> AI Configuration</h2>
@@ -141,16 +115,16 @@
 
             <div class="form-group">
                 <label>AI Auto-Reply Enabled</label>
-                <select>
-                    <option selected>Enabled</option>
+                <select id="aiEnabled">
+                    <option>Enabled</option>
                     <option>Disabled</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Default Response Tone</label>
-                <select>
-                    <option selected>Professional</option>
+                <select id="aiTone">
+                    <option>Professional</option>
                     <option>Friendly</option>
                     <option>Formal</option>
                 </select>
@@ -158,28 +132,29 @@
 
             <div class="form-group">
                 <label>Escalation Threshold</label>
-                <select>
+                <select id="aiEscalation">
                     <option>Low Sentiment Only</option>
-                    <option selected>High & Angry Sentiment</option>
+                    <option>High & Angry Sentiment</option>
                     <option>All Negative Messages</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>API Key (Secure)</label>
-                <input type="password" placeholder="Enter AI API Key">
+                <label>API Key</label>
+                <input type="password" id="aiApiKey">
             </div>
 
-            <button class="btn btn-primary">Save AI Settings</button>
+            <button class="btn btn-primary" id="saveAiBtn">
+                Save AI Settings
+            </button>
         </section>
 
     </main>
 </div>
 
 <script type="module" src="protect.js"></script>
-<script type="module" src="quote.js"></script>
+<script type="module" src="settings.js"></script>
 <script type="module" src="logout.js"></script>
-
 
 </body>
 </html>

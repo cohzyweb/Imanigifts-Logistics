@@ -211,6 +211,31 @@ body {
     display: none;
 }
 
+.live-indicator {
+    font-size: 14px;
+    margin-left: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #e6f9ec;
+    color: #1e7e34;
+    font-weight: 600;
+}
+
+.live-indicator i {
+    font-size: 10px;
+    margin-right: 6px;
+}
+
+.live-indicator.updating {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.live-indicator.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
 
 /* ================= LAYOUT ================= */
 

@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get a Quote – Imani Gift Logistics</title>
+    <title>Track Shipment – Imani Gift Logistics</title>
 
-    <meta name="description" content="Request a personalized logistics quote. Fast, secure shipping and supply chain solutions tailored to your cargo.">
-    <meta name="keywords" content="logistics quote, freight rate, shipping cost, cargo pricing, supply chain quote">
+    <meta name="description" content="Track your shipment in real time with Imani Gift Logistics. Enter your tracking number for live updates.">
+    <meta name="keywords" content="track shipment, logistics tracking, freight tracking, cargo status">
     <meta name="author" content="Imani Gift Logistics">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Get a Quote | Imani Gift Logistics">
-    <meta property="og:description" content="Reliable logistics and supply chain solutions worldwide. Request your quote now.">
+    <meta property="og:title" content="Track Shipment | Imani Gift Logistics">
+    <meta property="og:description" content="Real-time tracking updates for your cargo and freight shipments.">
     <meta property="og:image" content="Imani_Logistics_1.png">
 
-    <!-- Favicon -->
     <link rel="icon" href="Imani_Logistics_1.png" type="image/png">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- EXTERNAL CSS - COMPLETE SEPARATION -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,7 +26,7 @@
             <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo">
         </div>
 
-        <nav class="nav" aria-label="Main navigation">
+        <nav class="nav">
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="service.html">Services</a></li>
@@ -42,21 +36,21 @@
         </nav>
 
         <div class="auth-buttons">
-            <a href="quote.html" class="btn btn-outline active">Get a Quote</a>
-            <a href="track.html" class="btn btn-primary">Track Shipment</a>
+            <a href="quote.html" class="btn btn-outline">Get a Quote</a>
+            <a href="track.html" class="btn btn-primary active">Track Shipment</a>
         </div>
 
-        <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <button type="button" class="menu-toggle" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 </header>
 
-<!<!-- ================= TRACKING HERO ================= -->
+<!-- ================= HERO ================= -->
 <section class="contact-hero">
     <div class="container">
         <h1>Track Your Shipment</h1>
-        <p>Enter your tracking number below to get real-time shipment updates.</p>
+        <p>Enter your tracking number below to receive real-time updates.</p>
     </div>
 </section>
 
@@ -64,14 +58,17 @@
 <section class="contact-section">
     <div class="container">
 
-        <div class="quote-form-card" style="max-width: 700px; margin: 0 auto;">
+        <div class="quote-form-card" style="max-width:700px;margin:0 auto;">
 
             <!-- Tracking Form -->
             <form id="trackingForm">
                 <div class="tracking-form">
-                    <input type="text" id="trackingNumber" 
-                        placeholder="Enter Tracking Number (e.g., IGL123456789)" 
-                        required>
+                    <input 
+                        type="text" 
+                        id="trackingNumber"
+                        placeholder="Enter Tracking Number (e.g., IGL1708602389231)"
+                        required
+                    >
                     <button type="submit" class="btn btn-primary btn-large">
                         <i class="fa-solid fa-location-dot"></i> Track Now
                     </button>
@@ -79,56 +76,49 @@
             </form>
 
             <!-- Tracking Result -->
-            <div id="trackingResult" style="display:none; margin-top:40px;">
+            <div id="trackingResult" style="display:none;margin-top:40px;">
 
                 <!-- Status Badge -->
-                <div style="text-align:center; margin-bottom:25px;">
-                    <span style="
-                        background: var(--primary-color);
+                <div style="text-align:center;margin-bottom:25px;">
+                    <span id="statusBadge" style="
+                        background:orange;
                         color:#fff;
                         padding:10px 20px;
                         border-radius:30px;
-                        font-weight:600;">
-                        In Transit
+                        font-weight:600;
+                        display:inline-block;">
+                        LOADING...
                     </span>
                 </div>
 
                 <!-- Shipment Details -->
                 <div class="service-card" style="text-align:left;">
                     <h3>Shipment Details</h3>
-                    <p><strong>Tracking ID:</strong> IGL123456789</p>
-                    <p><strong>Origin:</strong> London, UK</p>
-                    <p><strong>Destination:</strong> Manchester, UK</p>
-                    <p><strong>Estimated Delivery:</strong> 24 February 2026</p>
-                </div>
 
-                <!-- Progress Timeline -->
-                <div style="margin-top:30px;">
-                    <h3 style="margin-bottom:20px;">Shipment Progress</h3>
+                    <p><strong>Tracking ID:</strong> 
+                        <span id="displayTrackingId"></span>
+                    </p>
 
-                    <ul style="list-style:none; padding-left:0;">
-                        <li style="margin-bottom:15px;">
-                            <i class="fa-solid fa-circle-check" style="color:var(--primary-color);"></i>
-                            Order Received – 18 Feb 2026
-                        </li>
-                        <li style="margin-bottom:15px;">
-                            <i class="fa-solid fa-circle-check" style="color:var(--primary-color);"></i>
-                            Dispatched from Warehouse – 19 Feb 2026
-                        </li>
-                        <li style="margin-bottom:15px;">
-                            <i class="fa-solid fa-truck" style="color:var(--accent-color);"></i>
-                            In Transit – 21 Feb 2026
-                        </li>
-                        <li style="opacity:0.5;">
-                            <i class="fa-regular fa-circle"></i>
-                            Out for Delivery
-                        </li>
-                    </ul>
+                    <p><strong>Origin:</strong> 
+                        <span id="displayOrigin"></span>
+                    </p>
+
+                    <p><strong>Destination:</strong> 
+                        <span id="displayDestination"></span>
+                    </p>
+
+                    <p><strong>Estimated Delivery:</strong> 
+                        <span id="displayETA"></span>
+                    </p>
+
+                    <p><strong>Total Price:</strong> 
+                        £<span id="displayTotal"></span>
+                    </p>
                 </div>
 
             </div>
-        </div>
 
+        </div>
     </div>
 </section>
 
@@ -136,7 +126,7 @@
 <section class="cta">
     <div class="container">
         <h2>Need Assistance?</h2>
-        <p>Contact our logistics support team for immediate help.</p>
+        <p>Our logistics support team is here to help.</p>
         <div class="cta-buttons">
             <a href="contact.html" class="btn btn-primary btn-light">Contact Support</a>
             <a href="quote.html" class="btn btn-outline">Request a Quote</a>
@@ -147,50 +137,26 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
     <div class="container">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="Imani_Logistics_1.png" alt="Imani Gift Logistics logo" loading="lazy">
-                <p>Smart, safe, and efficient logistics solutions.</p>
-                <div class="social-icons">
-                    <a href="https://www.tiktok.com/@imanigiftslogisti?_r=1&_t=ZN-93s4yZrfjyo" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.facebook.com/share/181meQYqVm/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/imanigiftslogistics?igsh=MWppN2V5ZWk0bm13Zg%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                    <a href="logistics@imanigifts.co.uk"><i class="fa-solid fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">News</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
+        <p>© 2026 Imani Gift Logistics. All rights reserved.</p>
     </div>
 </footer>
 
+<!-- ================= MOBILE MENU SCRIPT ================= -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav');
-        if (toggle && nav) {
-            toggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                this.setAttribute('aria-expanded', nav.classList.contains('active'));
-            });
-        }
-    });
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (toggle && nav) {
+        toggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+    }
+});
 </script>
-<script type="module" src="quote.js"></script>
+
+<!-- 🔥 REAL-TIME TRACKING SCRIPT -->
+<script type="module" src="track.js"></script>
 
 </body>
 </html>

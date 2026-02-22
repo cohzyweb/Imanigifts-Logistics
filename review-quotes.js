@@ -19,6 +19,7 @@ const docRef = doc(db, "quotes", quoteId);
 
 /* ================= GET ELEMENTS ================= */
 const form = document.getElementById("quoteForm");
+const liveIndicator = document.getElementById("liveIndicator");
 
 const customerName = document.getElementById("customerName");
 const customerEmail = document.getElementById("customerEmail");
@@ -36,16 +37,17 @@ const estimatedTime = document.getElementById("estimatedTime");
 const notes = document.getElementById("notes");
 
 /* ================= REAL-TIME LISTENER ================= */
-let isUpdating = false; // prevents overwrite while typing
+let isUpdating = false;
 
 onSnapshot(docRef, (docSnap) => {
 
   if (!docSnap.exists()) {
-    alert("Quote not found.");
+    liveIndicator.innerHTML = `<i class="fas fa-circle"></i> Not Found`;
+    liveIndicator.classList.add("error");
     return;
   }
 
-  if (isUpdating) return; // prevent UI flicker during update
+  if (isUpdating) return;
 
   const data = docSnap.data();
 
@@ -66,6 +68,9 @@ onSnapshot(docRef, (docSnap) => {
   status.value = data.status || "pending";
   estimatedTime.value = data.estimatedTime || "";
   notes.value = data.notes || "";
+
+  liveIndicator.innerHTML = `<i class="fas fa-circle"></i> Live`;
+  liveIndicator.classList.remove("updating", "error");
 
 });
 
@@ -90,6 +95,10 @@ form.addEventListener("submit", async (e) => {
 
     isUpdating = true;
 
+    liveIndicator.innerHTML =
+      `<i class="fas fa-sync-alt fa-spin"></i> Updating...`;
+    liveIndicator.classList.add("updating");
+
     await updateDoc(docRef, {
       basePrice: parseFloat(basePrice.value) || 0,
       vat: parseFloat(vatAmount.value) || 0,
@@ -100,13 +109,18 @@ form.addEventListener("submit", async (e) => {
       updatedAt: serverTimestamp()
     });
 
-    alert("✅ Quote updated successfully!");
+    isUpdating = false;
 
   } catch (error) {
-    console.error(error);
-    alert("❌ Failed to update quote.");
-  }
 
-  isUpdating = false;
+    console.error(error);
+
+    liveIndicator.innerHTML =
+      `<i class="fas fa-exclamation-circle"></i> Error`;
+    liveIndicator.classList.remove("updating");
+    liveIndicator.classList.add("error");
+
+    isUpdating = false;
+  }
 
 });
