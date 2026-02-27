@@ -248,7 +248,7 @@
             <div class="footer-links">
                 <h3>Support</h3>
                 <ul>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#footer" onclick="openModal('faqs')">FAQs</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="#footer" onclick="openModal('privacy')">Privacy Policy</a></li>
                     <li><a href="#footer" onclick="openModal('terms')">Terms & Conditions</a></li>
@@ -271,6 +271,78 @@
 
 <script>
 const policies = {
+ faqs: `
+    <h2>FAQs</h2>
+    <p><strong>ImaniGifts Logistics</strong></p>
+   <p> Q: What services does ImaniGifts Logistics offer?<br>
+    A: We offer same-day and scheduled courier services, parcel and goods transport, 
+    furniture transport, residential and small-scale removals, and both business and personal logistics services.</p>
+    <p>Q: Do you handle same-day deliveries?<br>
+    A: Yes! We provide same-day courier services. Contact us to confirm availability and book your slot.</p>
+   <p> Q: Can you transport furniture and help with house moves?<br>
+    A: Absolutely. We handle furniture transport and small-scale residential removals. <br>
+    Please inform us in advance of any access challenges such as stairs, narrow corridors, or restricted parking.</p>
+    <p>Q: Are there items you won't transport?<br>
+    A: Yes. We are unable to carry hazardous or flammable materials, explosives, gas cylinders, illegal substances,
+    firearms or weapons, cash, jewellery, negotiable instruments, or perishable goods (unless agreed in advance). 
+    Transporting undeclared prohibited items voids all liability.</p>
+    <p><h4>Booking and Delivery</h4>
+    Q: Are delivery times guaranteed?<br>
+    A: Delivery times are estimates unless a guaranteed time is agreed in writing. We are not liable for delays caused by<br>
+    traffic, weather, road closures, mechanical breakdown, or other circumstances beyond our control.</p>
+    <p>Q: What happens if I'm not available when the driver arrives?</br>
+    A: If delivery cannot be completed due to your unavailability, additional charges may 
+        apply. Please ensure someone is present or arrange authorised access at the agreed time.</p>
+    <p>Q: What information do I need to provide when booking?<br>
+    A: You must provide accurate collection and delivery details, declare any fragile or high-value 
+    items in advance, confirm items are legal to transport, and ensure suitable access at both locations.</br>
+    <p><h4>Payment</h4>
+    Q: When is payment due?<br>
+    A: Payment is due in advance or immediately upon completion of the service, unless otherwise agreed. A deposit may be required to secure your booking.</p>
+    <p>Q: What happens if I don't pay on time?<br>
+    A: Late payments may incur additional charges. Full payment must be received before unloading unless agreed otherwise, and failure to pay may 
+    void any liability protection.</p>
+    <p><h4>Removals - Condition and Liability</h4>
+    Q: Will you be liable for pre-existing damage to my items?<br>
+    A: No. Removals involve used and second-hand goods, and we do not guarantee the condition of items prior to collection. 
+    We are not liable for pre-existing damage, wear and tear, structural weakness, inherent defects, or age-related deterioration.</p>
+    <p>Q: What is your liability limit for removals?<br>
+    A: Our liability is strictly limited to £40 per individual item and a maximum of £750 per removal job. 
+    Compensation is based on current second-hand market value not replacement cost and only applies where loss or damage is proven to result from our negligence.</p>
+    <p>Q: Are there items you won't cover under liability?<br>
+    A: We do not accept liability for items packed by the customer, flat-pack or self-assembled furniture, IKEA or similar 
+    furniture damaged during dismantling or reassembly, MDF, chipboard, or veneered surfaces, electrical or mechanical failure, or sentimental value.</p>
+    <p>Q: What about fragile or specialist items?<br>
+    A: Unless agreed in writing beforehand, we do not accept liability for glass panels, marble or stone, antiques, artwork, 
+    TVs or monitors not in original packaging, pianos, grandfather clocks, documents, or plants. Please contact us in advance to arrange cover for specialist items.</p>
+    <p>Q: What if I pack my own goods?<br>
+    A: If you pack your own items, we accept no liability for damage caused by inadequate packing. 
+    If we provide packing services, liability still applies subject to our standard limits.</br>
+    <p><h4>Access and Property</h4>
+    Q: What access information do I need to share?<br>
+    A: Please inform us in advance about stairs, narrow corridors or tight turns, no lift access, restricted parking, and 
+    long carry distances. This helps us plan safely and allocate the right crew.</p>
+    <p>Q: Are you liable for damage to walls or property during a move?<br>
+    A: We are not responsible for damage to walls, ceilings, bannisters, or property in restricted access conditions, 
+    driveway or surface damage due to vehicle weight, or damage caused by insufficient space for safe manoeuvring.</p>
+    <p><h4>Insurance and Claims</h4>
+    Q: Are my goods insured during transit?<br>
+    A: Standard Goods in Transit cover applies subject to insurer terms and policy limits. Enhanced cover may be requested prior 
+    to collection. All liability remains subject to our standard limits unless otherwise agreed in writing.</p>
+    <p>Q: How do I make a claim for damaged or lost items?<br>
+    A: All claims must be submitted in writing within 24 hours of delivery, include photographic evidence, and specify the item 
+    and nature of the damage. Claims will not be accepted after 48 hours from delivery. We reserve the right to inspect goods before any settlement.</p>
+    <p><h4>Cancellation</h4>
+    Q: What is your cancellation policy?<br>
+    A: Cancellations made 48 hours or more in advance: no charge. Cancellations made 24–48 hours in advance: 50% charge. Cancellations with less 
+    than 24 hours' notice: 100% charge. Deposits may be non-refundable in cases of late cancellation.</p>
+    <p><h4>General</h4>
+    Q: Where is ImaniGifts Logistics registered?<br>
+    A: ImaniGifts Logistics is a trading name of ImaniGiftCompany Ltd, registered in England and Wales. Registered office: Tramshed Tech, Griffin Place, 
+    Griffin Street, High Street, Newport, Wales, NP20 1FX.</p>
+    <p>Q: Which law governs your Terms and Conditions?<br>
+    A: Our Terms and Conditions are governed by the laws of England and Wales.</p>
+`,
     privacy: `
         <h2>Privacy Policy</h2>
         <p>ImaniGifts Logistics<br>

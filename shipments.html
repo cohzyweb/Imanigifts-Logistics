@@ -79,7 +79,7 @@
 
                 <div class="search-bar">
                     <input type="text" id="searchInput" 
-                        placeholder="Search tracking ID or customer...">
+                        placeholder="Search tracking ID, customer, or route...">
 
                     <button class="btn btn-outline" 
                         onclick="openShipmentModal()">
@@ -88,24 +88,28 @@
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tracking ID</th>
-                        <th>Customer</th>
-                        <th>Route</th>
-                        <th>Shipment Type</th>
-                        <th>Status</th>
-                        <th>Estimated Delivery</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tracking ID</th>
+                            <th>Customer</th>
+                            <th>Route</th>
+                            <th>Shipment Type</th>
+                            <th>Status</th>
+                            <th>Estimated Delivery</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
 
-                <tbody id="shipmentsTableBody">
-                    <!-- Real-time Data Here -->
-                </tbody>
+                    <tbody id="shipmentsTableBody">
+                        <!-- Real-time Data -->
+                    </tbody>
+                </table>
+            </div>
 
-            </table>
+            <!-- ✅ Pagination Controls -->
+            <div id="pagination" class="pagination"></div>
 
         </section>
 
@@ -115,31 +119,40 @@
 <!-- ================= CREATE SHIPMENT MODAL ================= -->
 <div class="modal" id="shipmentModal">
     <div class="modal-content">
-        <h2>Create Shipment</h2>
 
-        <label>Customer Name</label>
-        <input type="text" id="newCustomer" class="form-control">
+        <div class="modal-header">
+            <h2>Create Shipment</h2>
+            <span class="close-modal" onclick="closeShipmentModal()">&times;</span>
+        </div>
 
-        <label>Route</label>
-        <input type="text" id="newRoute" class="form-control">
+        <div class="modal-body">
+            <label>Customer Name</label>
+            <input type="text" id="newCustomer" class="form-control">
 
-        <label>Shipment Type</label>
-        <select id="newType" class="form-control">
-            <option>Road Freight</option>
-            <option>Air Freight</option>
-            <option>Sea Freight</option>
-        </select>
+            <label>Route</label>
+            <input type="text" id="newRoute" class="form-control">
 
-        <label>Estimated Delivery Date</label>
-        <input type="date" id="newDate" class="form-control">
+            <label>Shipment Type</label>
+            <select id="newType" class="form-control">
+                <option>Road Freight</option>
+                <option>Air Freight</option>
+                <option>Sea Freight</option>
+            </select>
 
-        <button class="btn btn-primary" id="createShipmentBtn">
-            Create Shipment
-        </button>
+            <label>Estimated Delivery Date</label>
+            <input type="date" id="newDate" class="form-control">
+        </div>
 
-        <button class="btn btn-outline" onclick="closeShipmentModal()">
-            Cancel
-        </button>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="createShipmentBtn">
+                Create Shipment
+            </button>
+
+            <button class="btn btn-outline" onclick="closeShipmentModal()">
+                Cancel
+            </button>
+        </div>
+
     </div>
 </div>
 
