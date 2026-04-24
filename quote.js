@@ -14,7 +14,6 @@ if (form) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Disable button & show loading state
     submitBtn.disabled = true;
     submitBtn.innerHTML = "Submitting...";
 
@@ -27,7 +26,7 @@ if (form) {
 
       await addDoc(collection(db, "quotes"), {
 
-        // 🔥 Aligned with Admin Dashboard
+        // ================= BASIC INFO =================
         fullName: document.getElementById("fullname").value,
         email: document.getElementById("email").value,
         company: document.getElementById("company").value,
@@ -45,12 +44,39 @@ if (form) {
 
         additionalServices: extras,
 
-        status: "pending", // lowercase for consistency
+        // ================= NEW: MOVING QUESTIONNAIRE =================
+
+        // Packing & Preparation
+        packingResponsibility: document.getElementById("packing")?.value || "",
+        materialsNeeded: document.getElementById("materials")?.value || "",
+        furnitureDisassembly: document.getElementById("furniture")?.value || "",
+        fragileItems: document.getElementById("fragile")?.value || "",
+
+        // Access
+        floorLevels: document.getElementById("floors")?.value || "",
+        elevator: document.getElementById("elevator")?.value || "",
+        parking: document.getElementById("parking")?.value || "",
+        walkingDistance: document.getElementById("distance")?.value || "",
+        accessIssues: document.getElementById("access")?.value || "",
+
+        // Support & Manpower
+        onSiteSupervisor: document.getElementById("supervisor")?.value || "",
+        extraHelp: document.getElementById("help")?.value || "",
+        applianceHelp: document.getElementById("appliances")?.value || "",
+
+        // Inventory & Logistics
+        boxCount: document.getElementById("boxes")?.value || "",
+        bulkyItems: document.getElementById("bulky")?.value || "",
+        timing: document.getElementById("timing")?.value || "",
+        storage: document.getElementById("storage")?.value || "",
+
+        // ================= SYSTEM =================
+        status: "pending",
         createdAt: serverTimestamp()
 
       });
 
-      // Success Message
+      // ================= SUCCESS =================
       messageBox.innerHTML = 
         "✅ Quote submitted successfully! We’ll respond within 2 hours.";
       messageBox.className = "form-message success";
@@ -71,6 +97,7 @@ if (form) {
     submitBtn.disabled = false;
     submitBtn.innerHTML = 
       `<i class="fa-solid fa-calculator"></i> Get My Quote`;
+
   });
 
 }
